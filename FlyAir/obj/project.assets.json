@@ -12705,11 +12705,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "S:\\soft_projects\\VS2017_projs\\FlyAir\\FlyAir\\FlyAir.csproj",
+      "projectUniqueName": "S:\\soft_projects\\VS2017_projs\\FlyAirGit\\FlyAir\\FlyAir.csproj",
       "projectName": "FlyAir",
-      "projectPath": "S:\\soft_projects\\VS2017_projs\\FlyAir\\FlyAir\\FlyAir.csproj",
+      "projectPath": "S:\\soft_projects\\VS2017_projs\\FlyAirGit\\FlyAir\\FlyAir.csproj",
       "packagesPath": "C:\\Users\\CYH\\.nuget\\packages\\",
-      "outputPath": "S:\\soft_projects\\VS2017_projs\\FlyAir\\FlyAir\\obj\\",
+      "outputPath": "S:\\soft_projects\\VS2017_projs\\FlyAirGit\\FlyAir\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12728,8 +12728,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "S:\\soft_projects\\VS2017_projs\\FlyAir\\dapperIdentity\\Identity.Dapper.SqlServer\\Identity.Dapper.SqlServer.csproj": {
-              "projectPath": "S:\\soft_projects\\VS2017_projs\\FlyAir\\dapperIdentity\\Identity.Dapper.SqlServer\\Identity.Dapper.SqlServer.csproj"
+            "S:\\soft_projects\\VS2017_projs\\FlyAirGit\\dapperIdentity\\Identity.Dapper.SqlServer\\Identity.Dapper.SqlServer.csproj": {
+              "projectPath": "S:\\soft_projects\\VS2017_projs\\FlyAirGit\\dapperIdentity\\Identity.Dapper.SqlServer\\Identity.Dapper.SqlServer.csproj"
             }
           }
         }
