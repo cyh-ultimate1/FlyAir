@@ -1,9 +1,0 @@
-S:\soft_projects\VS2017_projs\FlyAir\ClassLibrary1\bin\Debug\netcoreapp2.1\ClassLibrary1.deps.json
-S:\soft_projects\VS2017_projs\FlyAir\ClassLibrary1\bin\Debug\netcoreapp2.1\ClassLibrary1.dll
-S:\soft_projects\VS2017_projs\FlyAir\ClassLibrary1\bin\Debug\netcoreapp2.1\ClassLibrary1.pdb
-S:\soft_projects\VS2017_projs\FlyAir\ClassLibrary1\obj\Debug\netcoreapp2.1\ClassLibrary1.csprojAssemblyReference.cache
-S:\soft_projects\VS2017_projs\FlyAir\ClassLibrary1\obj\Debug\netcoreapp2.1\ClassLibrary1.csproj.CoreCompileInputs.cache
-S:\soft_projects\VS2017_projs\FlyAir\ClassLibrary1\obj\Debug\netcoreapp2.1\ClassLibrary1.AssemblyInfoInputs.cache
-S:\soft_projects\VS2017_projs\FlyAir\ClassLibrary1\obj\Debug\netcoreapp2.1\ClassLibrary1.AssemblyInfo.cs
-S:\soft_projects\VS2017_projs\FlyAir\ClassLibrary1\obj\Debug\netcoreapp2.1\ClassLibrary1.dll
-S:\soft_projects\VS2017_projs\FlyAir\ClassLibrary1\obj\Debug\netcoreapp2.1\ClassLibrary1.pdb
