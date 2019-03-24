@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "apiFlightsView";
+}
+
+<h2>apiFlightsView</h2>
+
+<div class="wrapper">
+
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            //getFlights();
+            getOneFlight();
+        });
+
+        function getFlights() {
+            $.ajax({
+                url: '@Url.Content("../api/Flight")',
+                type: "GET",
+                contentType: "application/json; charset=utf-8;",
+                //datatype is what type Jquery ajax call expects in return.
+                dataType: "json",
+                //data: JSON.stringify({
+                //    departDate: departDateIn,
+                //    returnDate: returnDateIn,
+                //    //departDate: "05/03/2019",
+                //    //returnDate: "06/03/2019",
+                //    toAdjustGoFlight: isAdjustGoFlight
+                //}),
+                //headers: {
+                //    RequestVerificationToken:
+                //        $('input:hidden[name="__RequestVerificationToken"]').val()
+                //},
+                //async: true,
+                success: function (respData) {
+                    $.each(respData, function (idx, obj) {
+                        $(".wrapper").append("<div>" + obj.id + "</div>");
+                    });
+                    
+
+                }
+            });
+        }
+
+        function getOneFlight() {
+            $.ajax({
+                url: '@Url.Content("../api/Flight/")' + 2046,
+                type: "GET",
+                contentType: "application/json; charset=utf-8;",
+                //datatype is what type Jquery ajax call expects in return.
+                dataType: "json",
+                //data: JSON.stringify({
+                //    departDate: departDateIn,
+                //    returnDate: returnDateIn,
+                //    //departDate: "05/03/2019",
+                //    //returnDate: "06/03/2019",
+                //    toAdjustGoFlight: isAdjustGoFlight
+                //}),
+                //headers: {
+                //    RequestVerificationToken:
+                //        $('input:hidden[name="__RequestVerificationToken"]').val()
+                //},
+                //async: true,
+                success: function (respData) {
+                    $(".wrapper").append("<div>" + respData.price + "</div>");
+                    
+
+                }
+            });
+        }
+
+    </script>
+
+}

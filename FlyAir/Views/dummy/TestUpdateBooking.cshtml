@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewData["Title"] = "TestUpdateBooking";
+}
+
+<h2>TestUpdateBooking</h2>
+
+<div id="resultsDiv">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody id="tblInfo"></tbody>
+    </table>
+</div>
+
+
+
+@section Scripts{
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+
+    <script>
+        "use strict";
+        //debugger;
+
+        $(function () {
+            var $tbl = $('#tblInfo');
+            var connection = new signalR.HubConnectionBuilder().withUrl("/dummyHub").build();
+
+            connection.start().then(e => {
+                //alert("connection started");
+                getData();
+            });
+
+            connection.on("UpdateTable", function (respData) {
+                //$.each(JSON.parse(respData), function (idx, obj) {
+                //    alert(obj.name);
+                //});
+                populateTable($tbl, JSON.parse(respData));
+            });
+
+            //===================== functions ==============
+            function getData() {
+                $.ajax({
+                    url: "@Url.Content("/dummy/TestUpdateBooking2")",
+                    type: 'GET',
+                    datatype: 'json',
+                    success: function (respData) {
+                        populateTable($tbl, respData);
+                    }
+                });
+            }
+
+            function populateTable(el, respData) {
+                $tbl.empty();
+
+                $.each(respData, function (idx, obj) {
+                    $tbl.append
+                        (
+                        '<tr>' +
+                        '<td>' + obj.id + '</td>' +
+                        '<td>' + obj.name + '</td>' +
+                        '<tr>'
+                        );
+                });
+            }
+        });
+    </script>
+
+
+    @*<script>
+        "use strict";
+
+        var connection = new signalR.HubConnectionBuilder().withUrl("/dummyHub").build();
+
+        //Disable send button until connection is established
+        document.getElementById("sendButton").disabled = true;
+
+        connection.on("ReceiveMessage", function (user, message) {
+            var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            var encodedMsg = user + " says " + msg;
+            var li = document.createElement("li");
+            li.textContent = encodedMsg;
+            document.getElementById("messagesList").appendChild(li);
+        });
+
+        connection.start().then(function () {
+            document.getElementById("sendButton").disabled = false;
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        document.getElementById("sendButton").addEventListener("click", function (event) {
+            var user = document.getElementById("userInput").value;
+            var message = document.getElementById("messageInput").value;
+            connection.invoke("SendMessage", user, message).catch(function (err) {
+                return console.error(err.toString());
+            });
+            event.preventDefault();
+        });
+    </script>*@
+}

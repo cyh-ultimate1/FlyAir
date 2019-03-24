@@ -1,0 +1,12 @@
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\bin\Debug\netstandard2.0\Identity.Dapper.PostgreSQL.deps.json
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\bin\Debug\netstandard2.0\Identity.Dapper.PostgreSQL.dll
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\bin\Debug\netstandard2.0\Identity.Dapper.PostgreSQL.pdb
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\bin\Debug\netstandard2.0\Identity.Dapper.dll
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\bin\Debug\netstandard2.0\Identity.Dapper.pdb
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\obj\Debug\netstandard2.0\Identity.Dapper.PostgreSQL.csprojAssemblyReference.cache
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\obj\Debug\netstandard2.0\Identity.Dapper.PostgreSQL.csproj.CoreCompileInputs.cache
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\obj\Debug\netstandard2.0\Identity.Dapper.PostgreSQL.AssemblyInfoInputs.cache
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\obj\Debug\netstandard2.0\Identity.Dapper.PostgreSQL.AssemblyInfo.cs
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\obj\Debug\netstandard2.0\Identity.Dapper.PostgreSQL.csproj.CopyComplete
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\obj\Debug\netstandard2.0\Identity.Dapper.PostgreSQL.dll
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.PostgreSQL\obj\Debug\netstandard2.0\Identity.Dapper.PostgreSQL.pdb

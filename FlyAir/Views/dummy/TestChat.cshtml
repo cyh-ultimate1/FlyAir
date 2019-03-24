@@ -1,0 +1,242 @@
+﻿@using FlyAir.Models.IdentityEntities
+@inject SignInManager<CustomUser> SignInManager
+@inject UserManager<CustomUser> UserManager
+@{
+    ViewData["Title"] = "TestChat";
+    var username = UserManager.GetUserName(User);
+}
+
+<style>
+    /*body{
+        position: relative;
+    }*/
+    .mainWrap {
+        height: 63vh;
+        padding: 0px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .msgInput {
+        position: fixed;
+        bottom: 0vh;
+        z-index: +99;
+        background-color: hotpink;
+        width: 100%;
+        height: 60px;
+        padding: 10px;
+    }
+    .msgInputWrapper{
+        
+    }
+    .myMessages > div {
+        word-wrap: break-word;
+    }
+        .myMessages > div > p {
+            border-radius: 5px;
+            
+            padding: 5px;
+            display: inline-block;
+        }
+    .msgRight {
+        text-align: right;
+        padding-left: 70px;
+        padding-right: 10px;
+        word-wrap: break-word;
+    }
+        .msgRight > p {
+            background-color: greenyellow;
+        }
+    .msgLeft {
+        padding-left: 10px;
+        padding-right: 70px;
+    }
+        .msgLeft > p {
+            background-color: lightpink;
+        }
+    .contactRadioWrapper{
+        padding: 5px;
+    }
+    .contactRadioWrapper input[name='contactRadio'] {
+        display: none;
+    }
+    .contactRadioWrapper label {
+        cursor: pointer;
+    }
+    .highlightGreen{
+        background-color: var(--myGreen);
+    }
+    .contactList {
+        height: 63vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+
+<h2>Your Chat</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-fluid contactList col-3">
+
+        </div>
+        <div class="container mainWrap col-9">
+            <div class=" myMessages">
+
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid msgInputWrapper">
+    <div class="row msgInput">
+        <div class="col-11">
+            <input type="text" id="messageInput" class="form-control" placeholder="Enter message here"/>
+        </div>
+        <div class="col-1">
+            <input type="button" id="sendButton" value="Send" class="btn btn-info"/>
+            <input type="button" id="joinButton" value="Join" class="btn btn-info"/>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+
+    <script>
+        $(function () {
+            $("footer").remove();
+            //"use strict";
+
+            var contactRadio = $('input:radio[name="contactRadio"]');
+            var contactRadioChkdStr = 'input[name="contactRadio"]:checked';
+            var prevContactRadioId = "";
+            var contactList = $(".contactList");
+            var userList = $("#userList");
+            var mainWrap = $(".mainWrap");
+            var messageInput = $("#messageInput");
+            var myMessages = $(".myMessages");
+            var sendButton = $("#sendButton");
+            var connId = "";
+            var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+            //Disable send button until connection is established
+            sendButton.attr("disabled", true);
+
+            //connection.on("ReceivePrivateMessage", function ( message) {
+            connection.on("ReceiveGroupMessage", function ( message, user) {
+            var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            var encodedMsg = "";
+            if (user == '@username') {
+                encodedMsg = msg;
+                myMessages.append('<div class="msgRight"><p>' + encodedMsg + '</p></div>');
+            } else {
+                encodedMsg = user + " : <br/>" + msg;
+                myMessages.append('<div class="msgLeft"><p>' + encodedMsg + '</p></div>');
+            }
+            mainWrap.animate({ scrollTop: myMessages.height() });
+            });
+
+            connection.on("UserConnected", function (connectionId, username) {
+                //userList.append('<option value="' + connectionId + '">' + username + '</option>');
+                connId = connectionId;
+                contactList.append('<div class="contactRadioWrapper"><label><input name="contactRadio" type="radio" data-contact-id="' + connectionId + '"/><span>' + username + '</span></label></div>' );
+            });
+
+            connection.on("UserDisconnected", function (connectionId) {
+                $('[data-contact-id="' + connectionId + '"]').parent().remove();
+            });
+
+            connection.start().then(function () {
+                //document.getElementById("sendButton").disabled = false;
+                //$("#userList option:first").attr('selected', 'selected')
+                //connection.invoke("JoinGroup", userList.val()).catch(function (err) {
+                //    return console.error(err.toString());
+                //});
+            }).catch(function (err) {
+                return console.error(err.toString());
+            });
+
+            messageInput.on('input paste', function () {
+                if (messageInput.val() !== "") {
+                    enableSendBtn(true);
+                } else {
+                    enableSendBtn(false);
+                }
+            });
+
+            $(document).keypress(function (e) {
+                var key = e.which;
+                if (key == 13 && !sendButton.is(":disabled"))  // the enter key code
+                {
+                    sendButton.click();
+                    return false;
+                }
+            });
+
+            sendButton.on("click", function (event) {
+                var user = '@username';
+                var message = messageInput.val();
+                //connId = userList.val();
+                //alert(connId);
+                //connection.invoke("SendPrivateMessage", connId, message).catch(function (err) {
+                //    return console.error(err.toString());
+                //});
+                connection.invoke("SendMessageToGroup", $("input[name='contactRadio']:checked").attr("data-contact-id"), message, '@username').catch(function (err) {
+                    return console.error(err.toString());
+                });
+
+                event.preventDefault();
+                messageInput.val("");
+                enableSendBtn(false);
+            });
+
+            //change when contact Radio is changed
+            contactList.on("change", "input[name = 'contactRadio']", function () {
+                if (prevContactRadioId !== "") {
+                    ResetPreviousSelectedRadio(prevContactRadioId, "highlightGreen");
+                }
+                prevContactRadioId = HighlightCurrContact(contactRadioChkdStr, "highlightGreen", false);
+                //alert($("input[name='contactRadio']:checked").attr("data-contact-id"));
+                myMessages.children().remove();
+                connection.invoke("JoinGroup", $("input[name='contactRadio']:checked").attr("data-contact-id")).catch(function (err) {
+                    return console.error(err.toString());
+                });
+            });
+
+
+            //userList.change(function (e) {
+            //    connection.invoke("JoinGroup", userList.val()).catch(function (err) {
+            //        return console.error(err.toString());
+            //    });
+            //    e.preventDefault();
+            //});
+
+            function enableSendBtn(enableTrue) {
+                if (enableTrue) {
+                    sendButton.attr("disabled", false);
+                } else {
+                    sendButton.attr("disabled", true);
+                }
+            }
+
+            function HighlightCurrContact(elName, bgColor, colorIsWhite) {
+                if (!colorIsWhite) {
+                    $(elName).parent().parent().addClass(bgColor).css("font-weight", "bold");
+                } else {
+                    $(elName).parent().parent().css("font-weight", "bold").addClass(bgColor).css("color", "white");
+                }
+                return $(elName).attr("data-contact-id");
+            }
+
+            function ResetPreviousSelectedRadio(previousRadioId, bgColor) {
+                $("input[data-contact-id='" + previousRadioId + "']").parent().parent().removeClass(bgColor).css("color", "black").css("font-weight", "normal");
+            }
+
+        });
+    </script>
+}

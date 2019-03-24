@@ -1,0 +1,44 @@
+@using Microsoft.AspNetCore.Identity
+@using FlyAir.Models.IdentityEntities
+
+@*@inject SignInManager<IdentityUser> SignInManager
+    @inject UserManager<IdentityUser> UserManager*@
+
+@inject SignInManager<CustomUser> SignInManager
+@inject UserManager<CustomUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+<form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+    <ul class="nav navbar-nav navbar-right">
+        @if (User.IsInRole(RoleNames.admin.ToUpper()))
+        {
+            <li class="nav-item"><a asp-controller="Admin" asp-action="Dashboard" class="nav-link">Admin Dashboard</a></li>
+        }
+        else if (User.IsInRole(RoleNames.staff1) || User.IsInRole(RoleNames.staff2))
+        {
+            <li class="nav-item"><a asp-controller="Staff" asp-action="Index" class="nav-link">Staff Dashboard</a></li>
+        }
+        <li class="nav-item">
+            <a asp-area="" asp-controller="dummy" asp-action="TestChat">TestChat</a>
+        </li>
+        <li>
+            <a asp-controller="Manage" asp-action="UserAccountDetails" title="Manage" class="btn btn-warning nav-link">Hello @UserManager.GetUserName(User)!</a>
+        </li>
+        <li>
+            @*<button type="submit" class="btn btn-link navbar-btn navbar-link logOffBtn">Log off</button>*@
+            <button type="submit" class="btn navbar-btn navbar-link logOffBtn">Log off</button>
+        </li>
+    </ul>
+</form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right" id="loginUl">
+        @*<li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+        <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>*@
+        
+        <li class="nav-item withBtn"><a asp-controller="Account" asp-action="LoginRegister" class="nav-link" id="loginClick">Log in / Sign Up</a></li>
+    </ul>
+}
