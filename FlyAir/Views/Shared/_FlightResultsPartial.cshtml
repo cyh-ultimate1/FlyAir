@@ -1,0 +1,112 @@
+﻿@model FlyAir.ViewModels.FlightsInputsVM
+@using FlyAir.Models.SearchModels
+@{
+    var isAdjustGoFlight = Model.adjustGoFlight;
+
+}
+
+@if (isAdjustGoFlight && Model.GoFlights != null)
+{
+    if (Model.GoFlights.Count() > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr style="font-weight: bold;">
+                    <td></td>
+                    <td>Departure Time</td>
+                    <td>Arrival Time</td>
+                    <td>Selection</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.GoFlights)
+                {
+                    <tr class="tblRow tblRowGo">
+                        <td></td>
+                        <td>
+                            <div class="col">
+                                <div>@item.DepartDateTime.ToShortDateString()</div>
+                                <div>@item.DepartDateTime.ToShortTimeString()</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <div>@item.ArrDateTime.ToShortDateString()</div>
+                                <div>@item.ArrDateTime.ToShortTimeString()</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="chkBoxWrapper">
+                                <label>
+                                    <input type="radio" name="oneIdSelGo" class="oneIdSelGo" value="@item.ID" />
+                                    <span class="customChkBox customChkBoxBorder"></span>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div>No Flights Available.</div>
+    }
+
+    <br />
+}
+
+
+
+@if (!isAdjustGoFlight && Model.ReturnFlights != null)
+{
+
+    if (Model.ReturnFlights.Count() > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr style="font-weight: bold;">
+                    <td></td>
+                    <td>Departure Time</td>
+                    <td>Arrival Time</td>
+                    <td>Selection</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ReturnFlights)
+                {
+                    <tr class="tblRow tblRowRet">
+                        <td></td>
+                        <td>
+                            <div class="col">
+                                <div>@item.DepartDateTime.ToShortDateString()</div>
+                                <div>@item.DepartDateTime.ToShortTimeString()</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col">
+                                <div>@item.ArrDateTime.ToShortDateString()</div>
+                                <div>@item.ArrDateTime.ToShortTimeString()</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="chkBoxWrapper">
+                                <label>
+                                    <input type="radio" name="oneIdSelRet" class="oneIdSelRet" value="@item.ID" />
+                                    <span class="customChkBox customChkBoxBorder"></span>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div>No Flights Available.</div>
+    }
+
+}
+
+

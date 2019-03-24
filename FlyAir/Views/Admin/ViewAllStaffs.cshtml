@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FlyAir.Models.StaffModels.Staff>
+
+@{
+    ViewData["Title"] = "ViewAllStaffs";
+}
+
+
+<div class="container-fluid">
+    <h2>ViewAllStaffs</h2>
+
+    <p>
+        <a asp-controller="Account" asp-action="RegisterStaff" class="btn btn-info">Add New Staff</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.ID)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        <a asp-controller="Admin" asp-action="EditStaff" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a> |
+                        <a asp-controller="Admin" asp-action="EditStaffRole" asp-route-id="@item.ID">Edit Role</a> |
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

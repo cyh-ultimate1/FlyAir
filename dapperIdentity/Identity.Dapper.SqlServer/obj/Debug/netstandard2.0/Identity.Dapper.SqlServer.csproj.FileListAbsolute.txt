@@ -1,0 +1,36 @@
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.deps.json
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.pdb
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.dll
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.pdb
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csprojAssemblyReference.cache
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csproj.CoreCompileInputs.cache
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.AssemblyInfoInputs.cache
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.AssemblyInfo.cs
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csproj.CopyComplete
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll
+S:\soft_projects\downloaded codes\Identity.Dapper-master\Identity.Dapper-master\src\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.pdb
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.deps.json
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.pdb
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.dll
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.pdb
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csprojAssemblyReference.cache
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csproj.CoreCompileInputs.cache
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.AssemblyInfoInputs.cache
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.AssemblyInfo.cs
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csproj.CopyComplete
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll
+S:\soft_projects_r\mor1\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.pdb
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.deps.json
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.pdb
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.dll
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.pdb
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csprojAssemblyReference.cache
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csproj.CoreCompileInputs.cache
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.AssemblyInfoInputs.cache
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.AssemblyInfo.cs
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csproj.CopyComplete
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll
+S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.pdb

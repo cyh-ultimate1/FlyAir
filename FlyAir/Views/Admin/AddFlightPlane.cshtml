@@ -1,0 +1,90 @@
+﻿@model FlyAir.Models.FlightModels.AddFlightPlaneVM
+@{
+    ViewData["Title"] = "AddFlightPlane";
+}
+
+<h2>Add/Edit Flight Plane</h2>
+
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="AddFlightPlane" asp-controller="Admin" method="post">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" value="@Model.Flight.ID" asp-for="Flight.ID" id="hiddenFlightId" />
+                <div class="form-group">
+                    <label asp-for="Flight.FlightSeatTypeID" class="control-label"></label>
+                    <select class="form-control" asp-for="Flight.FlightSeatTypeID" asp-items="@Model.FlightSeatTypes" id="flightSeatTypeIdSelect">
+                        <option value="null" selected="selected">-- Please select one --</option>
+                    </select>
+                    <span asp-validation-for="Flight.FlightSeatTypeID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Plane</label>
+                    <select class="form-control" asp-for="Flight.PlaneID" id="flightPlaneSelect"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+                @if (Model.Flight.PlaneID != null && Model.Flight.PlaneID > 0)
+                {
+                    <div class="form-group">
+                        Current Plane: @Model.Plane.Name
+                    </div>
+                }
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    @*<script src="~/js/Admin/addFlightPlane.js"></script>*@
+
+    <script>
+        $(function () {
+            //variables
+            var flightSeatTypeIdSelect = $("#flightSeatTypeIdSelect");
+            var flightPlaneSelect = $("#flightPlaneSelect");
+            var flightSeatTypeIdSelectVal = null;
+            var host = location.protocol + '//' + location.host + '/';
+
+            //implementation
+            flightSeatTypeIdSelect.change(function () {
+                flightSeatTypeIdSelectVal = flightSeatTypeIdSelect.val();
+                if (flightSeatTypeIdSelectVal != "null") {
+                    $.ajax({
+                        url: "@Url.Content("/Admin/GetAllAvailablePlanes")",
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8;",
+                        //datatype is what type Jquery ajax call expects in return.
+                        dataType: "json",
+                        //data: JSON.stringify({
+                        //    flightId: $("#hiddenFlightId").val(),
+                        //    flightSeatTypeId: flightSeatTypeIdSelectVal
+                        //}),
+                        data: {
+                            flightId: $("#hiddenFlightId").val(),
+                            flightSeatTypeId: flightSeatTypeIdSelectVal
+                        },
+                        //headers: {
+                        //    RequestVerificationToken:
+                        //        $('input:hidden[name="__RequestVerificationToken"]').val()
+                        //},
+                        success: function (respData) {
+                            flightPlaneSelect.children().remove();
+                            $.each(respData, function (idx, obj) {
+                                flightPlaneSelect.append('<option value="' + obj.id + '">' + obj.name + '</option>');
+                            })
+                        }
+                    });
+                }
+            });
+
+            //functions
+
+        });
+    </script>
+}
