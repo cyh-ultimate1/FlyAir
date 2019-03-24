@@ -26,6 +26,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper\bin\Debug\netstandard2.0\Identity.Dapper.dll" target="lib\netstandard2.0\Identity.Dapper.dll" />
+    <file src="S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\bin\Debug\netstandard2.0\Identity.Dapper.dll" target="lib\netstandard2.0\Identity.Dapper.dll" />
   </files>
 </package>

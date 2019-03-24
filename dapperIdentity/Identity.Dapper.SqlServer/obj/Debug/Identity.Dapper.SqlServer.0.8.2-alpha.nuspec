@@ -22,6 +22,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll" target="lib\netstandard2.0\Identity.Dapper.SqlServer.dll" />
+    <file src="S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll" target="lib\netstandard2.0\Identity.Dapper.SqlServer.dll" />
   </files>
 </package>

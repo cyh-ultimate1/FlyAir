@@ -28,3 +28,13 @@ S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper\obj\Debug\ne
 S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper\obj\Debug\netstandard2.0\Identity.Dapper.AssemblyInfo.cs
 S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper\obj\Debug\netstandard2.0\Identity.Dapper.dll
 S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper\obj\Debug\netstandard2.0\Identity.Dapper.pdb
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\bin\Debug\netstandard2.0\Identity.Dapper.deps.json
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\bin\Debug\netstandard2.0\Identity.Dapper.dll
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\bin\Debug\netstandard2.0\Identity.Dapper.pdb
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\obj\Debug\netstandard2.0\Identity.Dapper.csprojAssemblyReference.cache
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\obj\Debug\netstandard2.0\Identity.Dapper.csproj.CoreCompileInputs.cache
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\obj\Debug\netstandard2.0\PlatformCompat.Analyzers.settings
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\obj\Debug\netstandard2.0\Identity.Dapper.AssemblyInfoInputs.cache
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\obj\Debug\netstandard2.0\Identity.Dapper.AssemblyInfo.cs
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\obj\Debug\netstandard2.0\Identity.Dapper.dll
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper\obj\Debug\netstandard2.0\Identity.Dapper.pdb

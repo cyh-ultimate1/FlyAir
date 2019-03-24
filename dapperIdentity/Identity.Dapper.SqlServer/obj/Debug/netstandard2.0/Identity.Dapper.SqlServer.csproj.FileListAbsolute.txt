@@ -34,3 +34,15 @@ S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\ob
 S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csproj.CopyComplete
 S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll
 S:\soft_projects\VS2017_projs\FlyAir\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.pdb
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.deps.json
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.SqlServer.pdb
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.dll
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\bin\Debug\netstandard2.0\Identity.Dapper.pdb
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csprojAssemblyReference.cache
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csproj.CoreCompileInputs.cache
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.AssemblyInfoInputs.cache
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.AssemblyInfo.cs
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.csproj.CopyComplete
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.dll
+S:\soft_projects\VS2017_projs\FlyAirGit\dapperIdentity\Identity.Dapper.SqlServer\obj\Debug\netstandard2.0\Identity.Dapper.SqlServer.pdb
