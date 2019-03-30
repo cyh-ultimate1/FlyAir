@@ -76,10 +76,10 @@
                     @Html.DisplayFor(modelItem => item.FlightSeatType.ID)
                 </td>
                 <td>
-                    <a asp-action="EditFlight" asp-route-flightId="@item.ID">Edit</a> |
-                    <a asp-action="DeleteFlight" asp-route-flightId="@item.ID">Delete</a> |
-                    <a asp-action="AddFlightStaffs" asp-route-flightId="@item.ID" class="btn btn-warning">AddFlightStaffs</a>
-                    <a asp-action="AddFlightPlane" asp-route-flightId="@item.ID" class="btn btn-warning">AddFlightPlane</a>
+                    <a asp-action="EditFlight" asp-route-flightId="@item.ID" class="btn btn-success">Edit</a> |
+                    <a asp-action="DeleteFlight" asp-route-flightId="@item.ID" class="btn btn-danger">Delete</a> |
+                    <a asp-action="AddFlightStaffs" asp-route-flightId="@item.ID" class="btn btn-warning">Edit Staffs</a>
+                    <a asp-action="AddFlightPlane" asp-route-flightId="@item.ID" class="btn btn-warning">Edit Plane</a>
                 </td>
             </tr>
             }
