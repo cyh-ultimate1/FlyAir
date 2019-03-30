@@ -1,0 +1,81 @@
+﻿@model FlyAir.Models.FlightModels.AddFlightStaffsVM
+@{
+    ViewData["Title"] = "AddFlightStaffs";
+    var PilotsOnFlight = Model.StaffsOnFlight.Where(s => s.StaffTypeID == 1).Select(s => new SelectListItem { Value = s.ID.ToString(), Text = s.Name });
+    var StewardsOnFlight = Model.StaffsOnFlight.Where(s => s.StaffTypeID == 2).Select(s => new SelectListItem { Value = s.ID.ToString(), Text = s.Name });
+}
+
+<div class="container-fluid">
+    <h2>Add Flight Staffs</h2>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="AddFlightStaffs" asp-controller="Admin" method="post" id="addForm">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" value="@Model.Flight.ID" asp-for="Flight.ID" id="hiddenFlightId" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">Pilots Available</label>
+                        <select multiple class="form-control" asp-items="@Model.PilotsAvailable" id="pilotsAvailable"></select>
+                        <span asp-validation-for="PilotsAvailable" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="col">
+                            <div class="btn btn-info" id="addOneToListBtnPilot">></div>
+                            <div class="btn btn-info" id="remOneFromListBtnPilot"><</div>
+                            <div class="btn btn-info" id="addAllToListBtnPilot">>></div>
+                            <div class="btn btn-info" id="remAllFromListBtnPilot"><<</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Pilots To Be Added / On Flight</label>
+                        <select multiple class="form-control" asp-for="PilotsSelectedId" asp-items="@PilotsOnFlight" id="pilotsAvailableSelected"></select>
+                        <span asp-validation-for="PilotsSelectedId" class="text-danger"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label">Stewards Available</label>
+                        <select multiple class="form-control" asp-items="@Model.StewardsAvailable" id="stewardsAvailable"></select>
+                        <span asp-validation-for="StewardsAvailable" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="col">
+                            <div class="btn btn-info" id="addOneToListBtnSteward">></div>
+                            <div class="btn btn-info" id="remOneFromListBtnSteward"><</div>
+                            <div class="btn btn-info" id="addAllToListBtnSteward">>></div>
+                            <div class="btn btn-info" id="remAllFromListBtnSteward"><<</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label">Stewards To Be Added / On Flight</label>
+                        <select multiple class="form-control" asp-for="StewardsSelectedId" asp-items="@StewardsOnFlight" id="stewardsAvailableSelected"></select>
+                        <span asp-validation-for="StewardsSelectedId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                @*<hr />
+        <div class="form-group">
+            <div id="staffsToBeAdded"></div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div id="staffsOnFlight"></div>
+        </div>*@
+                <br /><br />
+                <div class="form-group">
+                    <input type="submit" value="Add Staffs" class="btn btn-success" id="submitBtn" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts{
+    <script src="~/js/Admin/addFlightStaffs.js"></script>
+}

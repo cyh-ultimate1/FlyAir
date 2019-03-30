@@ -1,0 +1,120 @@
+﻿@model FlyAir.Models.SearchModels.SearchFlight
+
+@{
+    ViewData["Title"] = "Home Page";
+    var slide1 = "/images/" + "planeWing.jpeg";
+    var slide2 = "/images/" + "holdingPassport.jpeg";
+}
+
+<link rel="stylesheet" href="~/css/homepage.css" />
+
+
+<!--============== Swiper slider ================ -->
+<!-- Slider main container -->
+<div class="swiper-container main-slider" id="myCarousel">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide slider-bg-position" style="background: url('@slide1');"
+             data-hash="slide1">
+            <div class="slideBox mySlide1">
+                <div class="card">
+                    <div id="slideTitle">Fly Safe.<br />Fly Great.<br />Fly With Us.</div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide slider-bg-position" style="background: url('@slide2');"
+             data-hash="slide2">
+            <div class="slideBox mySlide2" style="background-color: rgba(0, 0, 0, 0.7);">
+                <div class="card">
+                    <div id="slideTitle">Your Gateway to the World.</div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="swiper-slide slider-bg-position" style="background: url('@slide2'); background-position: center center !important;"
+                 data-hash="slide2">
+                <div class="slideBox mySlide2" style="background-color: transparent;">
+                    <div class="card">
+                        <div id="slideTitle2">Singapore's No.1 Online Portal For Renovation Services</div>
+                        <p><a href="#" class="btn myBtnOrange btn-lg">LEARN MORE</a></p>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+
+    <!-- Add Pagination -->
+    @*<div class="swiper-pagination"></div>*@
+    <!-- Add Navigation -->
+    @*<div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+        <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>*@
+</div>
+
+
+<!--============= search Box =================-->
+<div class="card" id="searchBox">
+    <div class="container">
+        <form asp-controller="Flight" asp-action="SearchFlight" method="post" id="searchForm">
+            @Html.AntiForgeryToken()
+            <input asp-for="OriginID" type="hidden" />
+            <input asp-for="DestID" type="hidden" />
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input asp-for="OriginName" type="text" class="form-control" id="originInput" placeholder="Origin Location" />
+                    <span asp-validation-for="OriginName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input asp-for="DestName" type="text" class="form-control" id="destInput" placeholder="Destination Location"/>
+                    <span asp-validation-for="DestName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input asp-for="DepartDate" type="date" class="form-control" required />
+                    <span asp-validation-for="DepartDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group" id="returnDateGrp">
+                <div class="col-md-12">
+                    <input asp-for="ReturnDate" type="date" class="form-control"/>
+                    <span asp-validation-for="ReturnDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="">
+                        <input type="radio" asp-for="WaySelection" value="2" checked />&nbsp;<label>Return Way</label>
+                        <span>&nbsp;&nbsp;</span>
+                        <input type="radio" asp-for="WaySelection" value="1" />&nbsp;<label>One Way</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row col-md-12">
+                    <div class="col-md-6">
+                        <label class="control-label">Num. Of Adults</label>
+                        <input asp-for="AdultNum" type="number" class="form-control" min="1" value="1"/>
+                        <span asp-validation-for="AdultNum" class="text-danger"></span>
+                    </div>
+                    @*<div class="col-md-6">
+                            <input asp-for="ChildrenNum" type="number" class="form-control" />
+                            <span asp-validation-for="ChildrenNum" class="text-danger"></span>
+                        </div>*@
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-danger btn-red" value="SEARCH" id="submitBtn" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    @*@{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }*@
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/homepage.js"></script>
+}

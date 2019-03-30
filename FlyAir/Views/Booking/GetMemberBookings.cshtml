@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FlyAir.Models.BookingModels.Booking>
+@{
+    ViewData["Title"] = "GetMemberBookings";
+    var idx = 0;
+}
+
+<link rel="stylesheet" href="~/css/getMemberBookings.css">
+
+<div class="container">
+    <h2>Your Bookings</h2>
+
+    <div>
+        @foreach (var item in Model)
+        {
+        <div class="card">
+            @{idx++;}
+            <div class="row" style="font-weight: bold;">
+                <label class="control-label col-md-2">Booking ID:</label>
+                <label class="control-label col-md-10">@item.ID</label>
+            </div>
+            <div>Go Flight</div>
+            <div class="row">
+                <label class="control-label col-md-2">Departure Date:</label>
+                <label class="control-label col-md-10">@item.GoFlight.DepartDateTime.ToShortDateString()</label>
+            </div>
+            <div class="row">
+                <label class="control-label col-md-2">Departure Time:</label>
+                <label class="control-label col-md-10">@item.GoFlight.DepartDateTime.ToShortTimeString()</label>
+            </div>
+            <div class="row">
+                <label class="control-label col-md-2">Journey:</label>
+                <label class="control-label col-md-10">@item.GoFlight.OriginLoc.City, @item.GoFlight.OriginLoc.CountryName - @item.GoFlight.DestLoc.City, @item.GoFlight.DestLoc.CountryName</label>
+            </div>
+
+            @if (item.ReturnFlight != null)
+            {
+                <hr />
+                <div>Return Flight</div>
+                <div class="row">
+                    <label class="control-label col-md-2">Departure Date:</label>
+                    <label class="control-label col-md-10">@item.ReturnFlight.DepartDateTime.ToShortDateString()</label>
+                </div>
+                <div class="row">
+                    <label class="control-label col-md-2">Departure Time:</label>
+                    <label class="control-label col-md-10">@item.ReturnFlight.DepartDateTime.ToShortTimeString()</label>
+                </div>
+                <div class="row">
+                    <label class="control-label col-md-2">Journey:</label>
+                    <label class="control-label col-md-10">@item.ReturnFlight.OriginLoc.City, @item.ReturnFlight.OriginLoc.CountryName - @item.ReturnFlight.DestLoc.City, @item.ReturnFlight.DestLoc.CountryName</label>
+                </div>
+            }
+                <form asp-controller="Booking" asp-action="WebCheckIn" method="post">
+                    @if (!item.HasCheckedIn)
+                    {
+                        <input type="hidden" value="@item.ID" name="bookingId" />
+                        <input type="submit" class="btn btn-primary" value="Check-in" />
+                    }
+                    else
+                    {
+                        <input type="submit" class="btn btn-warning" value="More details" />
+                    }
+                </form>
+
+        </div>
+        <br />
+        }
+    </div>
+</div>
