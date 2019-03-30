@@ -24,11 +24,13 @@ namespace FlyAir.Data.Repositories
         private readonly IConfiguration _config;
         private SqlTableDependency<Booking> _tableDependency;
         private readonly IHubContext<BookingHub> _bookingHub;
+        private readonly IGlobalRepo _globalRepo;
 
-        public BookingRepo(IConfiguration config, IHubContext<BookingHub> bookingHub)
+        public BookingRepo(IConfiguration config, IHubContext<BookingHub> bookingHub, IGlobalRepo globalRepo)
         {
             _config = config;
             _bookingHub = bookingHub;
+            _globalRepo = globalRepo;
         }
 
         public IDbConnection Connection
@@ -92,8 +94,9 @@ namespace FlyAir.Data.Repositories
                     var result = conn.QueryAsync<int>(sQuery, new { Name = booking.Name, Age = booking.Age, BookingID = bookingId, IsMainPayer = booking.IsMainPayer, DateOfBirth = booking.DateOfBirth, PassportNum = booking.PassportNum }).Result.Single();
                     return result;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    _globalRepo.SaveExceptionToLogFile(ex);
                     throw;
                 }
                 finally

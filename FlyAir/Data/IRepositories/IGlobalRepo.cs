@@ -15,5 +15,6 @@ namespace FlyAir.Data.IRepositories
         void SaveObjToSessionJSON<T>(string varName, object obj);
         T GetObjFromSessionJSON<T>(string varName);
         T GetJObjVar<T>(JObject obj, string varName);
+        void SaveExceptionToLogFile(Exception ex);
     }
 }
