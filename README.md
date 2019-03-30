@@ -4,6 +4,6 @@ Project: FlyAir
 Objective: A web portal for customers to book flights/seats and to manage their bookings. This web portal also allows company employees to manage internal issues such as flight management, staff management, inventory management.
 
 Back-end: .NET Core 2.1, SignalR
-\nFront-end: Bootstrap, JQuery, Swiper, SlickJS, FontAwesome
+Front-end: Bootstrap, JQuery, Swiper, SlickJS, FontAwesome
 Database: MSSQL Server
 Database ORM: Dapper .NET
