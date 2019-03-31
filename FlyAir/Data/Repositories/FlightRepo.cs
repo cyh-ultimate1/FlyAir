@@ -39,7 +39,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT * FROM Flights WHERE OriginLocID = @OriginId AND DestLocID = @DestId";
+                    string sQuery = $@"SELECT * FROM {Flight.tableName} WHERE OriginLocID = @OriginId AND DestLocID = @DestId";
                     conn.Open();
                     var result = await conn.QueryAsync<Flight>(sQuery, new { OriginId = originId, DestId = destId });
                     return result;
@@ -61,7 +61,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT * FROM Flights WHERE OriginLocID = @OriginId AND DestLocID = @DestId AND CAST(DepartDateTime AS DATE) = @DepartDate;";
+                    string sQuery = $"SELECT * FROM {Flight.tableName} WHERE OriginLocID = @OriginId AND DestLocID = @DestId AND CAST(DepartDateTime AS DATE) = @DepartDate;";
                     //string sQuery = "SELECT * FROM Flights AS f INNER JOIN FlightSeatTypes AS fs ON f.FlightSeatTypeID = fs.ID AND f.OriginLocID = @OriginId AND f.DestLocID = @DestId AND CAST(f.DepartDateTime AS DATE) >= @DepartDate;";
                     conn.Open();
                     var flights = new FlightsInputsVM();
@@ -91,7 +91,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT * FROM Flights WHERE ID = @FlightId";
+                    string sQuery = $"SELECT * FROM {Flight.tableName} WHERE ID = @FlightId";
                     conn.Open();
                     var result = await conn.QuerySingleAsync<Flight>(sQuery, new { FlightId = flightId });
                     return result;
@@ -113,7 +113,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT * FROM Flights WHERE ID IN @FlightIds";
+                    string sQuery = $"SELECT * FROM {Flight.tableName} WHERE ID IN @FlightIds";
                     conn.Open();
                     var result = await conn.QueryAsync<Flight>(sQuery, new { FlightIds = flightIds });
                     return result;
@@ -129,27 +129,27 @@ namespace FlyAir.Data.Repositories
             }
         }
 
-        public async Task<IEnumerable<FlightSeatType>> GetAllFlightSeatTypes()
-        {
-            using (IDbConnection conn = Connection)
-            {
-                try
-                {
-                    string sQuery = "SELECT * FROM FlightSeatTypes";
-                    conn.Open();
-                    var result = await conn.QueryAsync<FlightSeatType>(sQuery);
-                    return result;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-        }
+        //public async Task<IEnumerable<FlightSeatType>> GetAllFlightSeatTypes()
+        //{
+        //    using (IDbConnection conn = Connection)
+        //    {
+        //        try
+        //        {
+        //            string sQuery = "SELECT * FROM FlightSeatTypes";
+        //            conn.Open();
+        //            var result = await conn.QueryAsync<FlightSeatType>(sQuery);
+        //            return result;
+        //        }
+        //        catch (Exception)
+        //        {
+        //            throw;
+        //        }
+        //        finally
+        //        {
+        //            conn.Close();
+        //        }
+        //    }
+        //}
 
         public async Task<FlightSeatType> GetFlightSeatTypeById(int id)
         {
@@ -157,7 +157,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT * FROM FlightSeatTypes WHERE ID = @Id";
+                    string sQuery = $"SELECT * FROM {FlightSeatType.tableName} WHERE ID = @Id";
                     conn.Open();
                     var result = await conn.QuerySingleAsync<FlightSeatType>(sQuery, new { Id = id });
                     return result;
@@ -180,7 +180,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "INSERT INTO Flights ([OriginLocID],[DestLocID],[DepartDateTime],[ArrDateTime],[Price]) VALUES (@OriginLocID, @DestLocID, @DepartDateTime, @ArrDateTime, @Price);" +
+                    string sQuery = $"INSERT INTO {Flight.tableName} ([OriginLocID],[DestLocID],[DepartDateTime],[ArrDateTime],[Price]) VALUES (@OriginLocID, @DestLocID, @DepartDateTime, @ArrDateTime, @Price);" +
                         commonName.addReturnIntQuery;
                     conn.Open();
                     var result = await conn.QuerySingleAsync<int>(sQuery, new { OriginLocID = flight.OriginLocID,
@@ -211,7 +211,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "UPDATE Flights SET OriginLocID = @OriginLocID, DestLocID=@DestLocID, DepartDateTime=@DepartDateTime, ArrDateTime=@ArrDateTime, Price=@Price " +
+                    string sQuery = $"UPDATE {Flight.tableName} SET OriginLocID = @OriginLocID, DestLocID=@DestLocID, DepartDateTime=@DepartDateTime, ArrDateTime=@ArrDateTime, Price=@Price " +
                         "WHERE ID = @Id;";
                         //commonName.addReturnIntQuery;
                     conn.Open();
@@ -245,7 +245,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "UPDATE Flights SET SeatsRemain = ((SELECT SeatsRemain WHERE ID = @Id )+@Count) WHERE ID = @Id;";
+                    string sQuery = $"UPDATE {Flight.tableName} SET SeatsRemain = ((SELECT SeatsRemain WHERE ID = @Id )+@Count) WHERE ID = @Id;";
                     conn.Open();
                     var result = await conn.ExecuteAsync(sQuery, new { Id = flightId, Count = count });
 
@@ -316,7 +316,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "INSERT INTO Planes (Name, FlightSeatTypeID) VALUES (@Name, @FlightSeatTypeID)" +
+                    string sQuery = $"INSERT INTO {Plane.tableName} (Name, FlightSeatTypeID) VALUES (@Name, @FlightSeatTypeID)" +
                         "SELECT CAST(SCOPE_IDENTITY() as int)";
                     conn.Open();
                     var result = conn.QueryAsync<int>(sQuery, new { Name = plane.Name, FlightSeatTypeID = plane.FlightSeatTypeID }).Result.Single();
@@ -339,7 +339,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT * FROM Planes WHERE ID = (SELECT PlaneID FROM Flights WHERE ID = @FlightId)";
+                    string sQuery = $"SELECT * FROM {Plane.tableName} WHERE ID = (SELECT PlaneID FROM {Flight.tableName} WHERE ID = @FlightId)";
                     conn.Open();
                     var result = await conn.QuerySingleAsync<Plane>(sQuery, new { FlightId = flightId });
                     return result;

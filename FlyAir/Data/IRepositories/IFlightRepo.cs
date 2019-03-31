@@ -14,7 +14,7 @@ namespace FlyAir.Data.IRepositories
         Task<FlightsInputsVM> GetBySearchInput(SearchFlight vm);
         Task<Flight> GetByFlightId(int flightId);
         Task<IEnumerable<Flight>> GetAllByFlightId(IEnumerable<int> flightIds);
-        Task<IEnumerable<FlightSeatType>> GetAllFlightSeatTypes();
+        //Task<IEnumerable<FlightSeatType>> GetAllFlightSeatTypes();
         Task<int> AddFlight(Flight flight);
         Task<FlightSeatType> GetFlightSeatTypeById(int id);
         Task<int> AddPlane(Plane plane);
