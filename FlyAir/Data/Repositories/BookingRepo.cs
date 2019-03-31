@@ -24,11 +24,13 @@ namespace FlyAir.Data.Repositories
         private readonly IConfiguration _config;
         private SqlTableDependency<Booking> _tableDependency;
         private readonly IHubContext<BookingHub> _bookingHub;
+        private readonly IGlobalRepo _globalRepo;
 
-        public BookingRepo(IConfiguration config, IHubContext<BookingHub> bookingHub)
+        public BookingRepo(IConfiguration config, IHubContext<BookingHub> bookingHub, IGlobalRepo globalRepo)
         {
             _config = config;
             _bookingHub = bookingHub;
+            _globalRepo = globalRepo;
         }
 
         public IDbConnection Connection
@@ -50,14 +52,14 @@ namespace FlyAir.Data.Repositories
                     conn.Open();
                     if (booking.ReturnFlight != null)
                     {
-                        sQuery = "INSERT INTO Bookings (DateTimeCreated, GoFlightId, ReturnFlightId, MemberId) VALUES (GETDATE(), @GoFlightId, @ReturnFlightId, @MemberId)" +
-                        "SELECT CAST(SCOPE_IDENTITY() as int);";
+                        sQuery = "INSERT INTO " + Booking.tableName + " (DateTimeCreated, GoFlightId, ReturnFlightId, MemberId) VALUES (GETDATE(), @GoFlightId, @ReturnFlightId, @MemberId) " +
+                        commonName.addReturnIntQuery;
                         result = await conn.QuerySingleAsync<int>(sQuery, new { GoFlightId = booking.GoFlightId, ReturnFlightId = booking.ReturnFlightId, MemberId = memberId });
                     }
                     else
                     {
-                        sQuery = "INSERT INTO Bookings (DateTimeCreated, GoFlightId, MemberId) VALUES (GETDATE(), @GoFlightId, @MemberId)" +
-                        "SELECT CAST(SCOPE_IDENTITY() as int);";
+                        sQuery = "INSERT INTO " + Booking.tableName + " (DateTimeCreated, GoFlightId, MemberId) VALUES (GETDATE(), @GoFlightId, @MemberId) " +
+                        commonName.addReturnIntQuery;
                         result = await conn.QuerySingleAsync<int>(sQuery, new { GoFlightId = booking.GoFlightId, MemberId = memberId });
                     }
                     using (var log = new LoggerConfiguration().MinimumLevel.Debug()
@@ -86,14 +88,14 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "INSERT INTO BookingNonMember (Name, Age, BookingID, IsMainPayer, DateOfBirth, PassportNum) VALUES (@Name, @Age, @BookingID, @IsMainPayer, @DateOfBirth, @PassportNum)" +
-                        "SELECT CAST(SCOPE_IDENTITY() as int)";
+                    string sQuery = "INSERT INTO " + BookingNonMember.tableName + " (Name, Age, BookingID, IsMainPayer, DateOfBirth, PassportNum) VALUES (@Name, @Age, @BookingID, @IsMainPayer, @DateOfBirth, @PassportNum) " + commonName.addReturnIntQuery;
                     conn.Open();
                     var result = conn.QueryAsync<int>(sQuery, new { Name = booking.Name, Age = booking.Age, BookingID = bookingId, IsMainPayer = booking.IsMainPayer, DateOfBirth = booking.DateOfBirth, PassportNum = booking.PassportNum }).Result.Single();
                     return result;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    _globalRepo.SaveExceptionToLogFile(ex);
                     throw;
                 }
                 finally
@@ -109,29 +111,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT * FROM Bookings WHERE MemberId = @MemberId";
-                    conn.Open();
-                    var result = await conn.QueryAsync<Booking>(sQuery, new { MemberId = userId });
-                    return result;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-        }
-
-        public async Task<IEnumerable<Booking>> GetMemberBookingsFlight(string userId)
-        {
-            using (IDbConnection conn = Connection)
-            {
-                try
-                {
-                    string sQuery = "SELECT * FROM Bookings WHERE MemberId = @MemberId";
+                    string sQuery = "SELECT * FROM " + Booking.tableName + " WHERE MemberId = @MemberId";
                     conn.Open();
                     var result = await conn.QueryAsync<Booking>(sQuery, new { MemberId = userId });
                     return result;
@@ -267,7 +247,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "UPDATE BookingNonMember SET SeatNumDigitGoFlight = @SeatNumDigitGoFlight, SeatNumLetterGoFlight = @SeatNumLetterGoFlight";
+                    string sQuery = "UPDATE " + BookingNonMember.tableName + " SET SeatNumDigitGoFlight = @SeatNumDigitGoFlight, SeatNumLetterGoFlight = @SeatNumLetterGoFlight";
                     if (input.SeatNumDigitReturnFlight != null)
                     {
                         sQuery += ", SeatNumDigitReturnFlight = @SeatNumDigitReturnFlight, SeatNumLetterReturnFlight = @SeatNumLetterReturnFlight";
@@ -294,7 +274,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "UPDATE Bookings SET HasCheckedIn = 'true' WHERE ID = @Id; ";
+                    string sQuery = "UPDATE " + Booking.tableName + " SET HasCheckedIn = 'true' WHERE ID = @Id; ";
                     conn.Open();
                     var result = await conn.ExecuteAsync(sQuery, new { Id = bookingId });
                     return result;
@@ -320,7 +300,7 @@ namespace FlyAir.Data.Repositories
                 try
                 {
                     var cs = _config.GetConnectionString(commonName.defaultConn);
-                    _tableDependency = new SqlTableDependency<Booking>(cs, "Bookings", null, null, null, null, DmlTriggerType.Insert);
+                    _tableDependency = new SqlTableDependency<Booking>(cs, Booking.tableName, null, null, null, null, DmlTriggerType.Insert);
                     _tableDependency.OnChanged += Changed;
                     //_tableDependency.OnError += TableDependency_OnError;
                     _tableDependency.Start();

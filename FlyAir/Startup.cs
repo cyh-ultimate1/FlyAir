@@ -69,7 +69,7 @@ namespace FlyAir
             {
                 options.LoginPath = "/Account/LoginRegister";
                 options.AccessDeniedPath = "/Account/RedirectAccessDenied";
-                //options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(10);   //adjust the login expiration time here
             });
 
             services.Configure<CookiePolicyOptions>(options =>

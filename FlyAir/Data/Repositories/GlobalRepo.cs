@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using mySession.Data.Extensions;
 using Newtonsoft.Json.Linq;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -87,6 +88,18 @@ namespace FlyAir.Data.Repositories
         public T GetJObjVar<T>(JObject obj, string varName)
         {
             return (obj[varName].Value<T>());
+        }
+
+        //method to save exception messages to log file
+        public void SaveExceptionToLogFile(Exception ex)
+        {
+            using (var log = new LoggerConfiguration().MinimumLevel.Debug()
+                                        .WriteTo.File("..\\fileDirectory\\logging.txt")
+                                        //.WriteTo.Console(restrictedToMinimumLevel: LogEventLevel.Information)
+                                        .CreateLogger())
+            {
+                log.Information($"Exception occurred: {ex}");
+            }
         }
     }
 }
