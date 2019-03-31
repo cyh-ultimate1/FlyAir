@@ -81,7 +81,7 @@ namespace FlyAir.Controllers
         //redirect to AddFlight view
         public async Task<IActionResult> AddFlight()
         {
-            var countries = await _countryRepo.GetAll();
+            var countries = await _globalRepo.GetAll<Country>(Country.tableName);
             var flightSeatTypes = await _flightRepo.GetAllFlightSeatTypes();
             var flightVM = new AddFlightVM
             {
@@ -109,7 +109,7 @@ namespace FlyAir.Controllers
 
         public async Task<IActionResult> EditFlight(int flightId)
         {
-            var countries = await _countryRepo.GetAll();
+            var countries = await _globalRepo.GetAll<Country>(Country.tableName);
             var flightVM = new AddFlightVM
             {
                 Flight = await _flightRepo.GetByFlightId(flightId),
