@@ -167,7 +167,6 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    //string sQuery = "SELECT * FROM Location WHERE Id = @Id";
                     string sQuery = $"SELECT loc.ID, loc.City, loc.CountryID, c.CountryName FROM {Location.tableName} AS loc INNER JOIN {Country.tableName} AS c ON loc.ID = @Id AND c.ID = loc.CountryID";
                     conn.Open();
                     var result = await conn.QuerySingleAsync<Location>(sQuery, new { Id = id });
