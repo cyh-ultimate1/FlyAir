@@ -81,8 +81,8 @@ namespace FlyAir.Controllers
         //redirect to AddFlight view
         public async Task<IActionResult> AddFlight()
         {
-            var countries = await _countryRepo.GetAll();
-            var flightSeatTypes = await _flightRepo.GetAllFlightSeatTypes();
+            var countries = await _globalRepo.GetAll<Country>(Country.tableName);
+            var flightSeatTypes = await _globalRepo.GetAll<FlightSeatType>(FlightSeatType.tableName);
             var flightVM = new AddFlightVM
             {
                 Flight = new Flight {
@@ -109,7 +109,7 @@ namespace FlyAir.Controllers
 
         public async Task<IActionResult> EditFlight(int flightId)
         {
-            var countries = await _countryRepo.GetAll();
+            var countries = await _globalRepo.GetAll<Country>(Country.tableName);
             var flightVM = new AddFlightVM
             {
                 Flight = await _flightRepo.GetByFlightId(flightId),
@@ -154,7 +154,7 @@ namespace FlyAir.Controllers
             {
                 Flight = await _flightRepo.GetByFlightId(flightId),
                 //Plane = new Plane (),
-                FlightSeatTypes = (await _flightRepo.GetAllFlightSeatTypes()).Select(s => new SelectListItem { Value = s.ID.ToString(), Text = "Rows: " + s.NumRows + ", Left: " + s.NumSeatsLeft + ", Center: " + s.NumSeatsCenter + ", Right: " + s.NumSeatsRight })
+                FlightSeatTypes = (await _globalRepo.GetAll<FlightSeatType>(FlightSeatType.tableName)).Select(s => new SelectListItem { Value = s.ID.ToString(), Text = "Rows: " + s.NumRows + ", Left: " + s.NumSeatsLeft + ", Center: " + s.NumSeatsCenter + ", Right: " + s.NumSeatsRight })
             };
             if (vm.Flight.PlaneID != null && vm.Flight.PlaneID > 0)
             {
@@ -264,7 +264,7 @@ namespace FlyAir.Controllers
         {
             AddPlaneVM vm = new AddPlaneVM
             {
-                FlightSeatTypes = (await _flightRepo.GetAllFlightSeatTypes()).Select(s => new SelectListItem { Value = s.ID.ToString(), Text = "Rows: " + s.NumRows + ", Left: " + s.NumSeatsLeft + ", Center: " + s.NumSeatsCenter + ", Right: " + s.NumSeatsRight }).ToList()
+                FlightSeatTypes = (await _globalRepo.GetAll<FlightSeatType>(FlightSeatType.tableName)).Select(s => new SelectListItem { Value = s.ID.ToString(), Text = "Rows: " + s.NumRows + ", Left: " + s.NumSeatsLeft + ", Center: " + s.NumSeatsCenter + ", Right: " + s.NumSeatsRight }).ToList()
             };
             return View(vm);
         }

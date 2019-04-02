@@ -29,27 +29,27 @@ namespace FlyAir.Data.Repositories
             }
         }
 
-        public async Task<IEnumerable<Country>> GetAll()
-        {
-            using (IDbConnection conn = Connection)
-            {
-                try
-                {
-                    string sQuery = "SELECT * FROM Countries";
-                    conn.Open();
-                    var result = await conn.QueryAsync<Country>(sQuery);
-                    return result;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-        }
+        //public async Task<IEnumerable<Country>> GetAll()
+        //{
+        //    using (IDbConnection conn = Connection)
+        //    {
+        //        try
+        //        {
+        //            string sQuery = "SELECT * FROM Countries";
+        //            conn.Open();
+        //            var result = await conn.QueryAsync<Country>(sQuery);
+        //            return result;
+        //        }
+        //        catch (Exception)
+        //        {
+        //            throw;
+        //        }
+        //        finally
+        //        {
+        //            conn.Close();
+        //        }
+        //    }
+        //}
 
         public async Task<IEnumerable<Country>> GetByInput(string input)
         {
@@ -57,7 +57,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT * FROM Countries WHERE CountryName LIKE @Input ";
+                    string sQuery = $"SELECT * FROM {Country.tableName} WHERE CountryName LIKE @Input ";
                     conn.Open();
                     var result = await conn.QueryAsync<Country>(sQuery, new { Input = "%" + input + "%"});
                     return result;
@@ -79,7 +79,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT loc.ID, loc.City, c.CountryName FROM (SELECT * FROM Location WHERE City LIKE @Input) AS loc INNER JOIN Countries AS c ON loc.CountryID = c.ID ";
+                    string sQuery = $"SELECT loc.ID, loc.City, c.CountryName FROM (SELECT * FROM {Location.tableName} WHERE City LIKE @Input) AS loc INNER JOIN {Country.tableName} AS c ON loc.CountryID = c.ID ";
                     conn.Open();
                     var result = await conn.QueryAsync<LocationVM>(sQuery, new { Input = "%" + input + "%" });
                     return result;
@@ -101,7 +101,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT loc.ID, loc.City, c.CountryName FROM (SELECT * FROM Location WHERE ID IN @LocIds) AS loc INNER JOIN Countries AS c ON loc.CountryID = c.ID";
+                    string sQuery = $"SELECT loc.ID, loc.City, c.CountryName FROM (SELECT * FROM {Location.tableName} WHERE ID IN @LocIds) AS loc INNER JOIN {Country.tableName} AS c ON loc.CountryID = c.ID";
                     conn.Open();
                     var result = await conn.QueryAsync<LocationVM>(sQuery, new { LocIds = locIds });
                     return result;
@@ -123,7 +123,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT loc.ID, loc.City, c.CountryName FROM (SELECT * FROM Location WHERE ID IN @LocIds) AS loc INNER JOIN Countries AS c ON loc.CountryID = c.ID";
+                    string sQuery = $"SELECT loc.ID, loc.City, c.CountryName FROM (SELECT * FROM {Location.tableName} WHERE ID IN @LocIds) AS loc INNER JOIN {Country.tableName} AS c ON loc.CountryID = c.ID";
                     conn.Open();
                     var result = await conn.QueryAsync<Location>(sQuery, new { LocIds = locIds });
                     return result;
@@ -145,7 +145,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT * FROM Location WHERE CountryID = @CountryId";
+                    string sQuery = $"SELECT * FROM {Location.tableName} WHERE CountryID = @CountryId";
                     conn.Open();
                     var result = await conn.QueryAsync<Location>(sQuery, new { CountryId = countryId });
                     return result;
@@ -167,8 +167,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    //string sQuery = "SELECT * FROM Location WHERE Id = @Id";
-                    string sQuery = "SELECT loc.ID, loc.City, loc.CountryID, c.CountryName FROM Location AS loc INNER JOIN Countries AS c ON loc.ID = @Id AND c.ID = loc.CountryID";
+                    string sQuery = $"SELECT loc.ID, loc.City, loc.CountryID, c.CountryName FROM {Location.tableName} AS loc INNER JOIN {Country.tableName} AS c ON loc.ID = @Id AND c.ID = loc.CountryID";
                     conn.Open();
                     var result = await conn.QuerySingleAsync<Location>(sQuery, new { Id = id });
                     return result;

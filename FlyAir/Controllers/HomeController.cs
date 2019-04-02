@@ -22,13 +22,6 @@ namespace FlyAir.Controllers
 
         public IActionResult Index()
         {
-            using (var log = new LoggerConfiguration().MinimumLevel.Debug()
-                .WriteTo.File("..\\fileDirectory\\logging.txt")
-                //.WriteTo.Console(restrictedToMinimumLevel: LogEventLevel.Information)
-                .CreateLogger())
-            {
-                log.Information("Someone entered the website!");
-            }
             var vm = new SearchFlight
             {
                 DepartDate = DateTime.Today,

@@ -9,7 +9,7 @@ namespace FlyAir.Data.IRepositories
 {
     public interface ICountryRepo
     {
-        Task<IEnumerable<Country>> GetAll();
+        //Task<IEnumerable<Country>> GetAll();
         Task<IEnumerable<Country>> GetByInput(string input);
         Task<IEnumerable<LocationVM>> GetLocByInput(string input);
         Task<IEnumerable<LocationVM>> GetAllLocById(IEnumerable<int> locIds);
