@@ -98,7 +98,7 @@ using FlyAir.Models.BookingModels;
             WriteLiteral("\r\n\r\n<div class=\"container\">\r\n    <h2>Confirm Booking</h2>\r\n    ");
             EndContext();
             BeginContext(286, 1455, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "18edc328670b4f9caebb283eed5fd4a5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7977a5d513c04b6e971baaffddf5ff7c", async() => {
                 BeginContext(359, 2, true);
                 WriteLiteral("\r\n");
                 EndContext();
@@ -170,7 +170,7 @@ using FlyAir.Models.BookingModels;
                 WriteLiteral("\r\n        <div><input type=\"submit\" class=\"btn btn-danger btn-red\" value=\"CONFIRM\" /></div>\r\n        <div>");
                 EndContext();
                 BeginContext(1616, 106, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8acd04fb14114b009a6f46778e6f62f3", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d9cd671c5eb4ffc885734fd25d32b35", async() => {
                     BeginContext(1714, 4, true);
                     WriteLiteral("EDIT");
                     EndContext();

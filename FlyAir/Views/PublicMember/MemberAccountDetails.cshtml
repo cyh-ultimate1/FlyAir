@@ -1,19 +1,24 @@
-﻿@model FlyAir.Models.IdentityEntities.CustomUser
+﻿@model FlyAir.Models.PublicMemberModels.PublicMemberAccDetVM
 @{
-    ViewData["Title"] = "AccountDetails";
+    ViewData["Title"] = "MemberAccountDetails";
+    var latestFlight = Model.LatestFlight;
 }
-
 <style>
-    label{
+    label {
         font-weight: bold;
     }
+
     #menuDiv a {
         width: 250px;
         height: 70px;
         margin-bottom: 10px;
     }
-    #menuDiv .row div{
+
+    #menuDiv .row div {
         /*margin: 5px 5px 5px 5px;*/
+    }
+    #upcFlightBox{
+        background-color: var(--myGreen);
     }
 </style>
 
@@ -23,34 +28,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <label asp-for="Email"></label>
+                    <label asp-for="User.Email"></label>
                 </div>
                 <div class="col-md-8">
-                    <div>@Model.Email</div>
+                    <div>@Model.User.Email</div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <label asp-for="UserName"></label>
+                    <label asp-for="User.UserName"></label>
                 </div>
                 <div class="col-md-8">
-                    <div>@Model.UserName</div>
+                    <div>@Model.User.UserName</div>
                 </div>
             </div>
-            @*<div class="row">
-            <div class="col-md-4">
-                <label asp-for="Address"></label>
-            </div>
-            <div class="col-md-8">
-                <div>@Model.Address</div>
-            </div>
-        </div>*@
             <div class="row">
                 <div class="col-md-4">
-                    <label asp-for="UserName"></label>
+                    <label>Upcoming Flight:</label>
                 </div>
-                <div class="col-md-8">
-                    @*<div>@Model.UserName</div>*@
+                <div class="col-md-4">
+                    <div class="card container" id="upcFlightBox">
+                        <div>@latestFlight.OriginLoc1.City, @latestFlight.OriginLoc1.CountryName to @latestFlight.DestLoc1.City, @latestFlight.DestLoc1.CountryName</div>
+                        <div>@latestFlight.DepartDateTime.ToString("dd MMM yyyy")</div>
+                        <div>@latestFlight.DepartDateTime.ToShortTimeString()</div>
+                    </div>
                 </div>
             </div>
             <br />
@@ -72,3 +73,4 @@
         </div>
     </div>
 </div>
+

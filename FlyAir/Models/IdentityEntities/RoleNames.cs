@@ -15,5 +15,7 @@ namespace FlyAir.Models.IdentityEntities
 
         public const string staff1 = "STAFF1";
         public const string staff2 = "STAFF2";
+
+        public const string allStaffs = staff1 + " , " + staff2;
     }
 }

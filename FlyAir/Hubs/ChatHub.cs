@@ -15,12 +15,12 @@ namespace FlyAir.Hubs
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
 
-        public async Task SendPrivateMessage2(string user, string message, string toUser)
-        {
-            var connId = Context.ConnectionId;
-            var name = Context.UserIdentifier;
-            await Clients.Users(name, "2").SendAsync("ReceivePrivateMessage2", user, message);
-        }
+        //public async Task SendPrivateMessage2(string user, string message, string toUser)
+        //{
+        //    var connId = Context.ConnectionId;
+        //    var name = Context.UserIdentifier;
+        //    await Clients.Users(name, "2").SendAsync("ReceivePrivateMessage2", user, message);
+        //}
 
         public async Task SendPrivateMessage(string connectionId, string message)
         {
