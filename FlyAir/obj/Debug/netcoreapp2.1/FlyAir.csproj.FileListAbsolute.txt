@@ -176,3 +176,4 @@ S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.Vi
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.csproj.CopyComplete
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.dll
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.pdb
+S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\Razor\Views\Staff\StaffChatBox.g.cshtml.cs

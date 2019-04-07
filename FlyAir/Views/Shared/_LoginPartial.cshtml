@@ -18,17 +18,17 @@
         }
         else if (User.IsInRole(RoleNames.staff1) || User.IsInRole(RoleNames.staff2))
         {
-            <li class="nav-item"><a asp-controller="Staff" asp-action="Index" class="nav-link">Staff Dashboard</a></li>
+            <li class="nav-item"><a asp-controller="Staff" asp-action="Index" class="nav-link btn btn-info">Staff Dashboard</a></li>
+            <li class="nav-item">
+                <a asp-area="" asp-controller="Staff" asp-action="StaffChatBox" class="nav-link btn btn-info">Staff Chat</a>
+            </li>
         }
-        <li class="nav-item">
-            <a asp-area="" asp-controller="dummy" asp-action="TestChat">TestChat</a>
-        </li>
         <li>
             <a asp-controller="Manage" asp-action="UserAccountDetails" title="Manage" class="btn btn-warning nav-link">Hello @UserManager.GetUserName(User)!</a>
         </li>
         <li>
             @*<button type="submit" class="btn btn-link navbar-btn navbar-link logOffBtn">Log off</button>*@
-            <button type="submit" class="btn navbar-btn navbar-link logOffBtn">Log off</button>
+            <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
         </li>
     </ul>
 </form>

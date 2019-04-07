@@ -6,11 +6,13 @@ using FlyAir.Data.IRepositories;
 using FlyAir.Models.FlightModels;
 using FlyAir.Models.IdentityEntities;
 using FlyAir.Models.StaffModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlyAir.Controllers
 {
+    [Authorize(Roles = RoleNames.allStaffs)]
     public class StaffController : Controller
     {
         private readonly UserManager<CustomUser> _userManager;
@@ -60,6 +62,11 @@ namespace FlyAir.Controllers
             staff.Flights = flights2;
 
             return View(staff);
+        }
+
+        public async Task<IActionResult> StaffChatBox()
+        {
+            return View();
         }
 
 
