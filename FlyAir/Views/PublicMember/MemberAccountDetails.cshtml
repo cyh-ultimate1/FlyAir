@@ -7,7 +7,6 @@
     label {
         font-weight: bold;
     }
-
     #menuDiv a {
         width: 250px;
         height: 70px;
@@ -17,14 +16,21 @@
     #menuDiv .row div {
         /*margin: 5px 5px 5px 5px;*/
     }
-    #upcFlightBox{
+    #upcFlightBox {
         background-color: var(--myGreen);
+        border: none;
+        border-radius: 0px;
+        padding: 10px;
+        font-weight: bold;
+    }
+    #userMain{
+        border: none;
     }
 </style>
 
 <div class="container">
     <h2>Your Account Details</h2>
-    <div class="card" style="margin-bottom: 50px;">
+    <div class="card" style="margin-bottom: 50px;" id="userMain">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -47,11 +53,19 @@
                     <label>Upcoming Flight:</label>
                 </div>
                 <div class="col-md-4">
-                    <div class="card container" id="upcFlightBox">
-                        <div>@latestFlight.OriginLoc1.City, @latestFlight.OriginLoc1.CountryName to @latestFlight.DestLoc1.City, @latestFlight.DestLoc1.CountryName</div>
-                        <div>@latestFlight.DepartDateTime.ToString("dd MMM yyyy")</div>
-                        <div>@latestFlight.DepartDateTime.ToShortTimeString()</div>
-                    </div>
+                    @if (latestFlight != null)
+                    {
+                        <div class="card container" id="upcFlightBox">
+                            <div>@latestFlight.OriginLoc1.City, @latestFlight.OriginLoc1.CountryName to @latestFlight.DestLoc1.City, @latestFlight.DestLoc1.CountryName</div>
+                            <div>@latestFlight.DepartDateTime.ToString("dd MMM yyyy")</div>
+                            <div>@latestFlight.DepartDateTime.ToShortTimeString()</div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>No upcoming flights</div>
+                    }
+
                 </div>
             </div>
             <br />

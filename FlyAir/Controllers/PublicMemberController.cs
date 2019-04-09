@@ -44,8 +44,11 @@ namespace FlyAir.Controllers
             var bookings = (await _bookingRepo.GetMemberBookings(vm.User.Id.ToString()));
             var bookingsFlightList = bookings.Select(b => b.GoFlightId).Concat(bookings.Select(b => b.ReturnFlightId));
             vm.LatestFlight = (await _flightRepo.GetAllByFlightId(bookingsFlightList)).Where(t=>t.DepartDateTime >= DateTime.Now).OrderBy(f=>f.DepartDateTime).FirstOrDefault();
-            vm.LatestFlight.OriginLoc1 = await _countryRepo.GetLocById(vm.LatestFlight.OriginLocID);
-            vm.LatestFlight.DestLoc1 = await _countryRepo.GetLocById(vm.LatestFlight.DestLocID);
+            if(vm.LatestFlight != null)
+            {
+                vm.LatestFlight.OriginLoc1 = await _countryRepo.GetLocById(vm.LatestFlight.OriginLocID);
+                vm.LatestFlight.DestLoc1 = await _countryRepo.GetLocById(vm.LatestFlight.DestLocID);
+            }
 
             return View(vm);
         }
