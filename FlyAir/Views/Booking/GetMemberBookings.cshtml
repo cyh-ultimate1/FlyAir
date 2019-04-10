@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "GetMemberBookings";
     var idx = 0;
+    var retFlightExpired = false;
 }
 
 <link rel="stylesheet" href="~/css/getMemberBookings.css">
@@ -48,16 +49,31 @@
                     <label class="control-label col-md-2">Journey:</label>
                     <label class="control-label col-md-10">@item.ReturnFlight.OriginLoc.City, @item.ReturnFlight.OriginLoc.CountryName - @item.ReturnFlight.DestLoc.City, @item.ReturnFlight.DestLoc.CountryName</label>
                 </div>
+                @if (item.ReturnFlight.DepartDateTime < DateTime.Now)
+                {
+                    retFlightExpired = true;
+                }
+                else
+                {
+                    retFlightExpired = false;
+                }
             }
                 <form asp-controller="Booking" asp-action="WebCheckIn" method="post">
-                    @if (!item.HasCheckedIn)
+                    @if (item.GoFlight.DepartDateTime < DateTime.Now && retFlightExpired)
                     {
-                        <input type="hidden" value="@item.ID" name="bookingId" />
-                        <input type="submit" class="btn btn-primary" value="Check-in" />
+                    <button class="btn btn-outline-danger" disabled>EXPIRED</button>
                     }
                     else
                     {
-                        <input type="submit" class="btn btn-warning" value="More details" />
+                        if (!item.HasCheckedIn)
+                        {
+                            <input type="hidden" value="@item.ID" name="bookingId" />
+                            <input type="submit" class="btn btn-primary" value="Check-in" />
+                        }
+                        else
+                        {
+                            <input type="submit" class="btn btn-warning" value="More details" />
+                        }
                     }
                 </form>
 

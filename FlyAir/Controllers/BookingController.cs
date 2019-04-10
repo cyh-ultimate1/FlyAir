@@ -162,7 +162,7 @@ namespace FlyAir.Controllers
                     bookings[idx].ReturnFlight.DestLoc = loc.Single(c => c.ID == bookings[idx].ReturnFlight.DestLocID);
                 }
             }
-            return View(bookings);
+            return View(bookings.OrderByDescending(b=>b.ID));
         }
 
         [HttpPost]
