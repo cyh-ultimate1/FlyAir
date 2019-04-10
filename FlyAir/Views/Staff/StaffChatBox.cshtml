@@ -150,6 +150,7 @@
             });
 
             connection.on("UserConnected", function (connectionId, username) {
+                //alert("User connected");
                 //userList.append('<option value="' + connectionId + '">' + username + '</option>');
                 connId = connectionId;
                 contactList.append('<div class="contactRadioWrapper"><label><input name="contactRadio" type="radio" data-contact-id="' + connectionId + '"/><span>' + username + '</span></label></div>' );
@@ -160,11 +161,17 @@
             });
 
             connection.start().then(function () {
+                alert("connection start");
                 //document.getElementById("sendButton").disabled = false;
                 //$("#userList option:first").attr('selected', 'selected')
                 //connection.invoke("JoinGroup", userList.val()).catch(function (err) {
                 //    return console.error(err.toString());
                 //});
+                var userConnIdPair = $.parseJSON(connection.invoke("GetAllConnectedUsers"));
+                alert(userConnIdPair);
+                for (var user in userConnIdPair) {
+                    contactList.append('<div class="contactRadioWrapper"><label><input name="contactRadio" type="radio" data-contact-id="' + user + '"/><span>' + userConnIdPair[user] + '</span></label></div>');
+                }
             }).catch(function (err) {
                 return console.error(err.toString());
             });
