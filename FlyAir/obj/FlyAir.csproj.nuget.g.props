@@ -23,5 +23,7 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_AspNetCore_Razor_Design Condition=" '$(PkgMicrosoft_AspNetCore_Razor_Design)' == '' ">C:\Users\CYH\.nuget\packages\microsoft.aspnetcore.razor.design\2.1.1</PkgMicrosoft_AspNetCore_Razor_Design>
+    <PkgjQuery Condition=" '$(PkgjQuery)' == '' ">C:\Users\CYH\.nuget\packages\jquery\3.1.0</PkgjQuery>
+    <PkgChartJS Condition=" '$(PkgChartJS)' == '' ">C:\Users\CYH\.nuget\packages\chartjs\18.2.7</PkgChartJS>
   </PropertyGroup>
 </Project>

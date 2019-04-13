@@ -102,7 +102,6 @@ S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.cs
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.csproj.CoreCompileInputs.cache
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.RazorAssemblyInfo.cache
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.RazorAssemblyInfo.cs
-S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.AssemblyInfoInputs.cache
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.AssemblyInfo.cs
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.TagHelpers.input.cache
