@@ -2,6 +2,16 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
+      "ChartJS/18.2.7": {
+        "type": "package",
+        "dependencies": {
+          "jQuery": "3.1.0",
+          "jquery-globalize": "1.1.1"
+        }
+      },
+      "cldrjs/0.4.4": {
+        "type": "package"
+      },
       "codecracker.CSharp/1.1.0": {
         "type": "package"
       },
@@ -17,6 +27,15 @@
         },
         "runtime": {
           "lib/netstandard2.0/Dapper.dll": {}
+        }
+      },
+      "jQuery/3.1.0": {
+        "type": "package"
+      },
+      "jquery-globalize/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "cldrjs": "0.4.4"
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -4769,6 +4788,56 @@
     }
   },
   "libraries": {
+    "ChartJS/18.2.7": {
+      "sha512": "BmuFbqmuyCzOGHBOhTBaAJT04yYeVudc2tu6xfAstasvMc8FwJipQpAfOuGCTD6CpXr/oUvns29+kiHH9lCWzA==",
+      "type": "package",
+      "path": "chartjs/18.2.7",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "chartjs.18.2.7.nupkg.sha512",
+        "chartjs.nuspec",
+        "content/net/Scripts/dx.viz.debug.js",
+        "content/net/Scripts/dx.viz.js",
+        "content/net/Scripts/vectormap-data/africa.js",
+        "content/net/Scripts/vectormap-data/canada.js",
+        "content/net/Scripts/vectormap-data/eurasia.js",
+        "content/net/Scripts/vectormap-data/europe.js",
+        "content/net/Scripts/vectormap-data/usa.js",
+        "content/net/Scripts/vectormap-data/world.js",
+        "content/net/Scripts/vectormap-utils/dx.vectormaputils.debug.js",
+        "content/net/Scripts/vectormap-utils/dx.vectormaputils.js",
+        "content/net/Scripts/vectormap-utils/dx.vectormaputils.node.js",
+        "content/netcore/js/dx.viz.debug.js",
+        "content/netcore/js/dx.viz.js",
+        "content/netcore/js/vectormap-data/africa.js",
+        "content/netcore/js/vectormap-data/canada.js",
+        "content/netcore/js/vectormap-data/eurasia.js",
+        "content/netcore/js/vectormap-data/europe.js",
+        "content/netcore/js/vectormap-data/usa.js",
+        "content/netcore/js/vectormap-data/world.js",
+        "content/netcore/js/vectormap-utils/dx.vectormaputils.debug.js",
+        "content/netcore/js/vectormap-utils/dx.vectormaputils.js",
+        "content/netcore/js/vectormap-utils/dx.vectormaputils.node.js",
+        "tools/install.ps1"
+      ]
+    },
+    "cldrjs/0.4.4": {
+      "sha512": "QTJ2r9FpA1XOFPRguhHAFjJZZJVil5TFOUCTLpN02BjQtgXgVDpt5VFyxQp/uNwEh0InNWLdIugl2Ls1IBqfXg==",
+      "type": "package",
+      "path": "cldrjs/0.4.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "cldrjs.0.4.4.nupkg.sha512",
+        "cldrjs.nuspec",
+        "content/Scripts/cldr.js",
+        "content/Scripts/cldr/event.js",
+        "content/Scripts/cldr/supplemental.js",
+        "content/Scripts/cldr/unresolved.js"
+      ]
+    },
     "codecracker.CSharp/1.1.0": {
       "sha512": "s5KSzc65WjT+912x+OLGrW0jA/R8e67GRymQeVUfIJsBx+UJVnPShvaqM48G7oGYUTqVnpJElYjGX313yeSuIA==",
       "type": "package",
@@ -4794,6 +4863,48 @@
         "lib/netstandard1.3/Dapper.xml",
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "jQuery/3.1.0": {
+      "sha512": "Q9+MHQLeJSemOaRlR9a0S8/MSBm7qY7cRPztwrOmtPXGXI7di8fm4Kjpqdphf41UC2RSXsqT5UVVoSabQNhwSg==",
+      "type": "package",
+      "path": "jquery/3.1.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery-3.1.0-vsdoc.js",
+        "Content/Scripts/jquery-3.1.0.js",
+        "Content/Scripts/jquery-3.1.0.min.js",
+        "Content/Scripts/jquery-3.1.0.min.map",
+        "Content/Scripts/jquery-3.1.0.slim.js",
+        "Content/Scripts/jquery-3.1.0.slim.min.js",
+        "Content/Scripts/jquery-3.1.0.slim.min.map",
+        "Tools/common.ps1",
+        "Tools/install.ps1",
+        "Tools/jquery-3.1.0.intellisense.js",
+        "Tools/uninstall.ps1",
+        "jquery.3.1.0.nupkg.sha512",
+        "jquery.nuspec"
+      ]
+    },
+    "jquery-globalize/1.1.1": {
+      "sha512": "tkRqYLIONjwamztg1rG+xyh2asA0ARLOPorfF3N9JW8fWr+srtPAeUNLFHF6NZAQ7Avnkzgi2OC505lK5avFag==",
+      "type": "package",
+      "path": "jquery-globalize/1.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Scripts/globalize.js",
+        "content/Scripts/globalize/currency.js",
+        "content/Scripts/globalize/date.js",
+        "content/Scripts/globalize/message.js",
+        "content/Scripts/globalize/number.js",
+        "content/Scripts/globalize/plural.js",
+        "content/Scripts/globalize/relative-time.js",
+        "content/Scripts/globalize/unit.js",
+        "jquery-globalize.1.1.1.nupkg.sha512",
+        "jquery-globalize.nuspec"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -12687,6 +12798,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "ChartJS >= 18.2.7",
       "Dapper >= 1.50.5",
       "Identity.Dapper.SqlServer >= 0.8.2-alpha",
       "Microsoft.AspNetCore.App >= 2.1.1",
@@ -12743,6 +12855,10 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
+          "ChartJS": {
+            "target": "Package",
+            "version": "[18.2.7, )"
+          },
           "Dapper": {
             "target": "Package",
             "version": "[1.50.5, )"
