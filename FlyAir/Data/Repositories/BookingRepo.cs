@@ -290,6 +290,27 @@ namespace FlyAir.Data.Repositories
             }
         }
 
+        public async Task<IEnumerable<FlightDestCount>> GetAllDestinationCount()
+        {
+            using (IDbConnection conn = Connection)
+            {
+                try
+                {
+                    string sQuery = $"SELECT DestLocID, City AS DestCityName, CountryName AS DestCountryName, count AS FreqCount FROM (SELECT innerGroup.DestLocID, COUNT(*) AS count FROM((SELECT b.GoFlightId AS flightId, f.ID, f.DestLocID FROM {Booking.tableName} AS b INNER JOIN {Flight.tableName} AS f ON b.GoFlightId = f.ID) UNION ALL(SELECT b.ReturnFlightId AS flightId, f.ID, f.DestLocID FROM {Booking.tableName} AS b INNER JOIN {Flight.tableName} AS f ON b.ReturnFlightId = f.ID)) AS innerGroup GROUP BY innerGroup.DestLocID) AS outerGroup INNER JOIN {Location.tableName} AS loc ON outerGroup.DestLocID = loc.ID INNER JOIN {Country.tableName} AS cty ON loc.CountryID = cty.ID";
+                    conn.Open();
+                    var result = await conn.QueryAsync<FlightDestCount>(sQuery);
+                    return result;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
 
         #region updateSubscription
 

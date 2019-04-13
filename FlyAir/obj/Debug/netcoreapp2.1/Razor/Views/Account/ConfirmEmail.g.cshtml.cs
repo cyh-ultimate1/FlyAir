@@ -96,7 +96,7 @@ Write(ViewData["Title"]);
             WriteLiteral(".</h2>\r\n<div>\r\n    <p>\r\n        Thank you for confirming your email. Please ");
             EndContext();
             BeginContext(149, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "81d82195917d46888da7a1ba53379f6c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8590e1c578144e7184e2fd658a12f4d2", async() => {
                 BeginContext(196, 20, true);
                 WriteLiteral("Click here to Log in");
                 EndContext();

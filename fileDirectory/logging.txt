@@ -145,3 +145,5 @@
 2019-03-31 23:29:24.503 +08:00 [Information] Someone entered the website!
 2019-04-07 15:05:48.428 +08:00 [Information] New booking added!
 2019-04-09 21:42:10.565 +08:00 [Information] New booking added!
+2019-04-13 20:04:18.461 +08:00 [Information] New booking added!
+2019-04-13 20:07:18.966 +08:00 [Information] New booking added!

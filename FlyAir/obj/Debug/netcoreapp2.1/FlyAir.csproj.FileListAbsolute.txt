@@ -177,3 +177,4 @@ S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.dl
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\FlyAir.pdb
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\Razor\Views\Staff\StaffChatBox.g.cshtml.cs
 S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\Razor\Views\PublicMember\MemberAccountDetails.g.cshtml.cs
+S:\soft_projects\VS2017_projs\FlyAirGit\FlyAir\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs

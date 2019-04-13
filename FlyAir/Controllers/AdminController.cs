@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FlyAir.Data.IRepositories;
 using FlyAir.Models;
+using FlyAir.Models.BookingModels;
 using FlyAir.Models.FlightModels;
 using FlyAir.Models.IdentityEntities;
 using FlyAir.Models.StaffModels;
@@ -35,9 +36,25 @@ namespace FlyAir.Controllers
             _globalRepo = globalRepo;
         }
 
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
             return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<JsonResult>> GetTopDestination()
+        {
+            var topN = 5;
+            //get all destination count and sort and take top N 
+            var flightDestCount = (await _bookingRepo.GetAllDestinationCount());
+            flightDestCount = flightDestCount.OrderByDescending(a => a.FreqCount).Take(topN).ToList();
+            if(flightDestCount != null && flightDestCount.Count() >= topN)
+            {
+                return Json(flightDestCount);
+            }
+
+            //if reach here, means destination is null or not enough number of destination
+            return NotFound("null or not enough destination");
         }
 
         #region HandleFlights
