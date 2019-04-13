@@ -1,4 +1,5 @@
 ﻿using FlyAir.Models.BookingModels;
+using FlyAir.Models.FlightModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace FlyAir.Data.IRepositories
         Task<int> UpdateGuestsSeats(BookingNonMember input);
         Task<int> UpdateHasCheckedIn(int bookingId);
         void subscribeBookingAdd();
+        Task<IEnumerable<FlightDestCount>> GetAllDestinationCount();
     }
 }
