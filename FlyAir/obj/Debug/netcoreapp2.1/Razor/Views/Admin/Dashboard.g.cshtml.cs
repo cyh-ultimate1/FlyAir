@@ -98,7 +98,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(49, 50, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "df7028634aa64a348c28e803c88d016b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "ec29301ca9de42eeba4ec2bd62e14c4c", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -134,7 +134,7 @@ using Microsoft.AspNetCore.Http;
         ");
             EndContext();
             BeginContext(356, 95, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "33b987f39bdb4eeebed50b72d04cb98e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "12730f2aa6084bed95148bf4910895a6", async() => {
                 BeginContext(431, 16, true);
                 WriteLiteral("View All Flights");
                 EndContext();
@@ -159,7 +159,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n    </div>\r\n    <div class=\"col-md-12 one\">\r\n        ");
             EndContext();
             BeginContext(506, 96, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de39751c124d4f5994c783c07dc51f9a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c2ee919fcba94b4ea83eaf30f84bf8b2", async() => {
                 BeginContext(583, 15, true);
                 WriteLiteral("View All Staffs");
                 EndContext();
@@ -184,7 +184,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n    </div>\r\n    <div class=\"col-md-12 one\">\r\n        ");
             EndContext();
             BeginContext(657, 93, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c10add3e9e3b43c691ce69942af40415", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75a2d5cb61ad4624b2a978333eb63f15", async() => {
                 BeginContext(731, 15, true);
                 WriteLiteral("View All Planes");
                 EndContext();
@@ -209,7 +209,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n    </div>\r\n    <div class=\"col-md-12 one\">\r\n        ");
             EndContext();
             BeginContext(805, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "37cdb1823c2f42888bda812f90b8e659", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0727287578fe4fb499e6a17aa3b6c5a3", async() => {
                 BeginContext(880, 12, true);
                 WriteLiteral("Manage Roles");
                 EndContext();
