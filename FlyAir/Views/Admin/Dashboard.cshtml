@@ -14,21 +14,115 @@
             width: 500px;
             height: 50px;
         }
+
+    #topDestCharttContainer{
+        width: 100%;
+        height: 500px;
+    }
+    #chartContainer > div{
+        border: solid 1px;
+    }
 </style>
 
 <div class="container">
     <h2>Admin Dashboard</h2>
 
     <div class="col-md-12 one">
-        <a asp-controller="Admin" asp-action="ViewAllFlights" class="btn btn-info">View All Flights</a>
+        <a asp-controller="Admin" asp-action="ViewAllFlights" class="btn btn-primary">View All Flights</a>
     </div>
     <div class="col-md-12 one">
-        <a asp-controller="Admin" asp-action="ViewAllStaffs" class="btn btn-warning">View All Staffs</a>
+        <a asp-controller="Admin" asp-action="ViewAllStaffs" class="btn btn-primary">View All Staffs</a>
     </div>
     <div class="col-md-12 one">
-        <a asp-controller="Admin" asp-action="ViewAllPlanes" class="btn btn-info">View All Planes</a>
+        <a asp-controller="Admin" asp-action="ViewAllPlanes" class="btn btn-primary">View All Planes</a>
     </div>
     <div class="col-md-12 one">
-        <a asp-controller="Account" asp-action="ViewRoles" class="btn btn-warning">Manage Roles</a>
+        <a asp-controller="Account" asp-action="ViewRoles" class="btn btn-primary">Manage Roles</a>
     </div>
 </div>
+<br />
+<br />
+
+<div class="container" id="chartContainer">
+    <div class="col-md-6">
+        <div class="container" id="topDestCharttContainer">
+            <canvas id="topDestChart"></canvas>
+        </div>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+<br />
+<br />
+
+
+@section Scripts{
+    <script src="~/lib/chartJS/Chart.bundle.min.js"></script>
+
+    <script>
+        $(function () {
+            var dataArr = [];   //dest count
+            var labelArr = [];  //dest name
+            getTopDest();
+
+            function getTopDest() {
+                $.ajax({
+                        url: "@Url.Content("/Admin/GetTopDestination")",
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8;",
+                        dataType: "json",
+                        success: function (respData) {
+                            $.each(respData.value, function (idx, obj) {
+                                dataArr.push(obj.freqCount);
+                                labelArr.push(obj.destCityName + ", " + obj.destCountryName);
+                            });
+                            renderChart(dataArr, labelArr);
+                        }
+                    });
+            }
+
+            function renderChart(data, labels) {
+                var ctx = document.getElementById("topDestChart").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Total count of destination',
+                            data: data,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        }]
+                    },
+                    options: {
+                        //set maintainAspectRatio to false to adjust chart size manually
+                        maintainAspectRatio: false,
+                        scales: {
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Frequency'
+                                },
+                                ticks: {
+                                    beginAtZero: true
+
+                                }
+                            }],
+                            xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'City, Country'
+                                }
+                            }]
+                        },
+                        title: {
+                            display: true,
+                            text: 'Top 5 bookings count by destination'
+                        }
+                    },
+                });
+            }
+        });
+    </script>
+}
