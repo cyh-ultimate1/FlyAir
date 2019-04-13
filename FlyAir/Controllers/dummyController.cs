@@ -41,5 +41,6 @@ namespace FlyAir.Controllers
             var results = await _dummyRepo.GetSqlTblDep();
             return Json(results);
         }
+
     }
 }
