@@ -43,9 +43,11 @@ namespace FlyAir.Hubs
             return Clients.Group(group).SendAsync("ReceiveGroupMessage", message, user);
         }
 
-        public string GetAllConnectedUsers()
+        [HttpGet]
+        public async Task<string> GetAllConnectedUsers()
         {
             return JsonConvert.SerializeObject(connectedUserIdPair);
+            //return  "{\"try\": \"try1\"}";
         }
 
         public override async Task OnConnectedAsync()
