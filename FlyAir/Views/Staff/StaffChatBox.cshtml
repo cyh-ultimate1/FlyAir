@@ -80,12 +80,15 @@
     }
 </style>
 
-<h2>Your Chat</h2>
+<div style="text-align: center">
+    <h2>Your Chat Box</h2>
+</div>
 
 <div class="container-fluid">
     <div class="row">
+        
         <div class="container-fluid contactList col-3">
-
+            <h6>Current Online Users</h6>
         </div>
         <div class="container mainWrap col-9">
             <div class=" myMessages">
@@ -129,53 +132,74 @@
             var messageInput = $("#messageInput");
             var myMessages = $(".myMessages");
             var sendButton = $("#sendButton");
-            var connId = "";
             var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+            var currentUserConnId = "";
+            var isFirstTimeLoad = true; //use this variable to determine if page is loaded for first time to capture current user connectionid
 
             //Disable send button until connection is established
             sendButton.attr("disabled", true);
 
-            //connection.on("ReceivePrivateMessage", function ( message) {
+            //signalR receive group message
             connection.on("ReceiveGroupMessage", function ( message, user) {
-            var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            var encodedMsg = "";
-            if (user == '@username') {
-                encodedMsg = msg;
-                myMessages.append('<div class="msgRight"><p>' + encodedMsg + '</p></div>');
-            } else {
-                encodedMsg = user + " : <br/>" + msg;
-                myMessages.append('<div class="msgLeft"><p>' + encodedMsg + '</p></div>');
-            }
-            mainWrap.animate({ scrollTop: myMessages.height() });
+                var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                var encodedMsg = "";
+
+                //check if message is by current user, then adjust the message position accordingly. Current user on the right, other user on the left.
+                if (user == '@username') {
+                    encodedMsg = msg;
+                    myMessages.append('<div class="msgRight"><p>' + encodedMsg + '</p></div>');
+                } else {
+                    encodedMsg = user + " : <br/>" + msg;
+                    myMessages.append('<div class="msgLeft"><p>' + encodedMsg + '</p></div>');
+                }
+
+                //keep latest messages in view
+                mainWrap.animate({ scrollTop: myMessages.height() });
             });
 
+            //signalR user connected
             connection.on("UserConnected", function (connectionId, username) {
                 //alert("User connected");
-                //userList.append('<option value="' + connectionId + '">' + username + '</option>');
-                connId = connectionId;
-                contactList.append('<div class="contactRadioWrapper"><label><input name="contactRadio" type="radio" data-contact-id="' + connectionId + '"/><span>' + username + '</span></label></div>' );
+
+                //check if page is loaded first time to capture current user connection id. else, append new user
+                if (isFirstTimeLoad) {
+                    currentUserConnId = connectionId;
+                    isFirstTimeLoad = false;
+                    connection.invoke("JoinGroup", currentUserConnId).catch(function (err) {
+                        return console.error(err.toString());
+                    });
+                } else {
+                    contactListAppendNewUser(connectionId, username);
+                }
+
             });
 
+            //signalR user disconnected
             connection.on("UserDisconnected", function (connectionId) {
                 $('[data-contact-id="' + connectionId + '"]').parent().parent().remove();
             });
 
+            //signalR connection start
             connection.start().then(function () {
-                alert("connection start");
-                //document.getElementById("sendButton").disabled = false;
-                //$("#userList option:first").attr('selected', 'selected')
-                //connection.invoke("JoinGroup", userList.val()).catch(function (err) {
-                //    return console.error(err.toString());
-                //});
-                var userConnIdPair = $.parseJSON(connection.invoke("GetAllConnectedUsers"));
-                alert(userConnIdPair);
-                for (var user in userConnIdPair) {
-                    contactList.append('<div class="contactRadioWrapper"><label><input name="contactRadio" type="radio" data-contact-id="' + user + '"/><span>' + userConnIdPair[user] + '</span></label></div>');
-                }
+                //alert("connection start");
+                var userConnIdPair = ((connection.invoke("GetAllConnectedUsers")));
+                var tempJsonObj = new Object();
+
+                //use 'then' to get synchronous object data
+                userConnIdPair.then(function (data) {
+                    tempJsonObj = JSON.parse(data);
+                    for (var obj in tempJsonObj) {
+                        if (obj != currentUserConnId) {
+                            contactListAppendNewUser(obj, tempJsonObj[obj]);
+                        }
+                    }
+                });
+                
             }).catch(function (err) {
                 return console.error(err.toString());
             });
 
+            //only enable send button if there is message written in the messageInput box
             messageInput.on('input paste', function () {
                 if (messageInput.val() !== "") {
                     enableSendBtn(true);
@@ -184,6 +208,7 @@
                 }
             });
 
+            //disallow "ENTER" from sending if send button is disabled.
             $(document).keypress(function (e) {
                 var key = e.which;
                 if (key == 13 && !sendButton.is(":disabled"))  // the enter key code
@@ -211,20 +236,12 @@
                     ResetPreviousSelectedRadio(prevContactRadioId, "highlightGreen");
                 }
                 prevContactRadioId = HighlightCurrContact(contactRadioChkdStr, "highlightGreen", false);
-                //alert($("input[name='contactRadio']:checked").attr("data-contact-id"));
                 myMessages.children().remove();
                 connection.invoke("JoinGroup", $("input[name='contactRadio']:checked").attr("data-contact-id")).catch(function (err) {
                     return console.error(err.toString());
                 });
             });
 
-
-            //userList.change(function (e) {
-            //    connection.invoke("JoinGroup", userList.val()).catch(function (err) {
-            //        return console.error(err.toString());
-            //    });
-            //    e.preventDefault();
-            //});
 
             function enableSendBtn(enableTrue) {
                 if (enableTrue) {
@@ -245,6 +262,10 @@
 
             function ResetPreviousSelectedRadio(previousRadioId, bgColor) {
                 $("input[data-contact-id='" + previousRadioId + "']").parent().parent().removeClass(bgColor).css("color", "black").css("font-weight", "normal");
+            }
+
+            function contactListAppendNewUser(connId, username) {
+                contactList.append('<div class="contactRadioWrapper"><label><input name="contactRadio" type="radio" data-contact-id="' + connId + '"/><span>' + username + '</span></label></div>');
             }
 
         });
