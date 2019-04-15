@@ -96,7 +96,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n\r\n\r\n<div class=\"container-fluid\">\r\n    <h4>View All Flights</h4>\r\n    <div>\r\n        ");
             EndContext();
             BeginContext(194, 87, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "28808692ee0a47548f61119935fef251", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "29e11cb60b7f4b74bc11f280d4b49bc5", async() => {
                 BeginContext(267, 10, true);
                 WriteLiteral("Add Flight");
                 EndContext();
@@ -330,7 +330,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n                </td>\r\n                <td>\r\n                    ");
             EndContext();
             BeginContext(2706, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b415131e6c034eac8eb5c9c0200042a0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "52f2d6ca75ec497ca720a43c6a54b6b2", async() => {
                 BeginContext(2787, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -366,7 +366,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral(" |\r\n                    ");
             EndContext();
             BeginContext(2819, 92, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36ab8fdf641f48e5b836cfb732fbd46b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6ef593cae066491db5c25a66b5cc52b4", async() => {
                 BeginContext(2901, 6, true);
                 WriteLiteral("Delete");
                 EndContext();
@@ -402,7 +402,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral(" |\r\n                    ");
             EndContext();
             BeginContext(2935, 101, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "50487d5f0ec742e6ba17beacc3388a74", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8aa1576caff34f93abdd88deafa5bd78", async() => {
                 BeginContext(3021, 11, true);
                 WriteLiteral("Edit Staffs");
                 EndContext();
@@ -438,7 +438,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n                    ");
             EndContext();
             BeginContext(3058, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d7fa45af18414043a4be21d0751c6994", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "009ae324335c450e8d665f937e1c8c4b", async() => {
                 BeginContext(3143, 10, true);
                 WriteLiteral("Edit Plane");
                 EndContext();

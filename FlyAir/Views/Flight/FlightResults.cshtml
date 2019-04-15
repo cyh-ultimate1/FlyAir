@@ -56,66 +56,82 @@
     <script src="~/js/Flight/flightResults.js"></script>
     <script src="~/lib/signalr/dist/browser/signalr.js"></script>
     <script>
-        //===== variables
-        var goSlider = $(".goSlider");
-        var slide = $(".slide");
-        var departDateIn = "";
-        var goFlightResults = $("#goFlightResults");
-        var retFlightResults = $("#retFlightResults");
-        var departDateIn = "", returnDateIn = "", parentClass = "";
-        var isAdjustGoFlight = true;
+        $(function () {
+                    //===== variables
+            var slide = $(".slide");
+            var departDateIn = "";
+            var goFlightResults = $("#goFlightResults");
+            var retFlightResults = $("#retFlightResults");
+            var departDateIn = "", returnDateIn = "", parentClass = "";
+            var isAdjustGoFlight = true;
 
-        //===============implementation
-        //when the slide of the slider is clicked, it becomes active slide and related flight details are obtained from ajax
-        slide.click(function () {
-            var slide_active = parseInt($(this).attr('data-slick-index'));
-            parentClass = $(this).parent().parent().parent().attr('data-class-type');
-            $("." + parentClass).slick('slickGoTo', slide_active);
+            //===============implementation
+            //when the slide of the slider is clicked, it becomes current slide and related flight details are obtained from ajax
+            slide.click(function () {
+                //get clicked slide index
+                var slide_active = parseInt($(this).attr('data-slick-index'));
+                //get parent class name
+                parentClass = $(this).parent().parent().parent().attr('data-class-type');
+                //move slick to clicked option
+                $("." + parentClass).slick('slickGoTo', slide_active);
 
-            if (parentClass === "goSlider") {
-                departDateIn = $(this).attr("data-date");
-                returnDateIn = '@Convert.ToDateTime(searchFlightTemp.ReturnDate).ToString("MM/dd/yyyy")';
-                isAdjustGoFlight = true;
-            } else if (parentClass === "retSlider") {
-                departDateIn = '@Convert.ToDateTime(searchFlightTemp.DepartDate).ToString("MM/dd/yyyy")';
-                returnDateIn = $(this).attr("data-date");
-                isAdjustGoFlight = false;
-            }
-            //alert("current adjust GO: " + isAdjustGoFlight);
-            getFlightAjax(departDateIn, returnDateIn, isAdjustGoFlight);
-        });
-
-
-
-        //===================functions
-        function getFlightAjax(departDateIn, returnDateIn, isAdjustGoFlight) {
-            $.ajax({
-                url: '@Url.Content("/Flight/SearchFlightShort")',
-                type: "POST",
-                contentType: "application/json; charset=utf-8;",
-                //datatype is what type Jquery ajax call expects in return.
-                dataType: "html",
-                data: JSON.stringify({
-                    departDate: departDateIn,
-                    returnDate: returnDateIn,
-                    //departDate: "05/03/2019",
-                    //returnDate: "06/03/2019",
-                    toAdjustGoFlight: isAdjustGoFlight
-                }),
-                headers: {
-                    RequestVerificationToken:
-                        $('input:hidden[name="__RequestVerificationToken"]').val()
-                },
-                async: true,
-                success: function (respData) {
-                    if (isAdjustGoFlight) {
-                        goFlightResults.html(respData);
-                    } else if (!isAdjustGoFlight) {
-                        retFlightResults.html(respData);
-                    }
-
-                }
+                processFlightDateSelection(parentClass)
             });
-        }
+
+            $(".slick-next,.slick-prev").click(function () {
+                //get parent class name
+                parentClass = ($(this).parent().attr('data-class-type'));
+
+                processFlightDateSelection(parentClass)
+            });
+
+            //===================functions
+            //function to process the flight date selection, to differentiate goSlider and retSlider
+            function processFlightDateSelection(parentClass) {
+                if (parentClass === "goSlider") {
+                    departDateIn = $("." + parentClass + " .slick-current").attr("data-date");
+                    returnDateIn = $(".retSlider .slick-current").attr("data-date");
+                    isAdjustGoFlight = true;
+                } else if (parentClass === "retSlider") {
+                    departDateIn = $(".goSlider .slick-current").attr("data-date");
+                    returnDateIn = $("." + parentClass + " .slick-current").attr("data-date");
+                    isAdjustGoFlight = false;
+                }
+                getFlightAjax(departDateIn, returnDateIn, isAdjustGoFlight);
+            }
+
+            function getFlightAjax(departDateIn, returnDateIn, isAdjustGoFlight) {
+                $.ajax({
+                    url: '@Url.Content("/Flight/SearchFlightShort")',
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8;",
+                    //datatype is what type Jquery ajax call expects in return.
+                    dataType: "html",
+                    data: JSON.stringify({
+                        departDate: departDateIn,
+                        returnDate: returnDateIn,
+                        //departDate: "05/03/2019",
+                        //returnDate: "06/03/2019",
+                        toAdjustGoFlight: isAdjustGoFlight
+                    }),
+                    headers: {
+                        RequestVerificationToken:
+                            $('input:hidden[name="__RequestVerificationToken"]').val()
+                    },
+                    async: true,
+                    success: function (respData) {
+                        if (isAdjustGoFlight) {
+                            goFlightResults.html(respData);
+                        } else if (!isAdjustGoFlight) {
+                            retFlightResults.html(respData);
+                        }
+
+                    }
+                });
+            }
+
+        });
     </script>
 }
+
+@*returnDateIn = '@Convert.ToDateTime(searchFlightTemp.ReturnDate).ToString("MM/dd/yyyy")';*@

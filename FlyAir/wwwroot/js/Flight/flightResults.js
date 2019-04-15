@@ -1,7 +1,6 @@
 ﻿
 $(function () {
     //================ variables
-    var oneIdSelGo = $(".oneIdSelGo"), oneIdSelRet = $(".oneIdSelRet");
     var previousCheckedGo = $(this), previousCheckedRet = $(this);  //just dummy assignment to prevent error. This var used to save previously checked item
     var tblRowHighlightStr = "tblRowHighlight";
     var tblRowGoStr = "tblRowGo", tblRowRetStr = "tblRowRet";
@@ -11,7 +10,6 @@ $(function () {
     var goFlightErr = $("#goFlightErr");
     var retFlightErr = $("#retFlightErr");
     var success = true;
-    var slide = $(".slide");
     var goSlider = $('.goSlider'), retSlider = $('.retSlider');
     var goFlightResults = $("#goFlightResults");
     var retFlightResults = $("#retFlightResults");
@@ -43,11 +41,6 @@ $(function () {
     initSlick(goSlider);
     initSlick(retSlider);
 
-    //slide.click(function () {
-    //    var slide_active = parseInt($(this).attr('data-slick-index'));
-    //    goSlider.slick('slickGoTo', slide_active);
-    //});
-
     goFlightResults.on("change", ".oneIdSelGo", function () {
         //check if checkbox is checked.
         if ($(this).is(':checked')) {
@@ -65,6 +58,7 @@ $(function () {
     submitBtn.click(function (e) {
         e.preventDefault();
         success = true;
+        //check if go Flight is not selected. Display error if not selected. Else, error text remain blank
         if (!$("input[name='oneIdSelGo']:checked").val()) {
             goFlightErr.text("");
             goFlightErr.append("Please select a flight");
@@ -72,6 +66,8 @@ $(function () {
         } else {
             goFlightErr.text("");
         }
+
+        //check if return Flight is not selected if return Flight exists. Display error if not selected. Else, error text remain blank.
         if (oneIdSelRetRadio.length && !$("input[name='oneIdSelRet']:checked").val()) {
             retFlightErr.text("");
             $("#retFlightErr").append("Please select a flight");
@@ -80,10 +76,13 @@ $(function () {
             retFlightErr.text("");
         }
 
+        //if condiftions fulfilled, submit form.
         if (success) {
             $("#formPost").submit();
         }
     });
+
+    
 
     //============== functions
     // to highlight the table row selected.
