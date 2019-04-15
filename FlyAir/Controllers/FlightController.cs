@@ -99,12 +99,6 @@ namespace FlyAir.Controllers
             return null;
         }
 
-        //public async Task<IActionResult> GetAllFlights()
-        //{
-        //    var result = await _globalRepo.GetAll<Flight>(Flight.tableName);
-        //    return View();
-        //}
-
         public IActionResult ViewApiFlights()
         {
             return View("apiFlightsView");
