@@ -196,3 +196,6 @@
 2019-04-20 13:46:07.690 +08:00 [Information] New booking added!
 2019-04-20 13:46:35.856 +08:00 [Information] New booking added!
 2019-04-20 13:47:12.820 +08:00 [Information] New booking added!
+2019-04-20 18:24:17.027 +08:00 [Information] New booking added!
+2019-04-20 18:37:15.002 +08:00 [Information] New booking added!
+2019-04-20 18:39:10.328 +08:00 [Information] New booking added!
