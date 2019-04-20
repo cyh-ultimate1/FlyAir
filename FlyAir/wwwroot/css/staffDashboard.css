@@ -1,5 +1,16 @@
 ﻿
+.yourWorkCard{
+    border: solid 2px;
+}
 .yourWorkCard #title {
     padding: 5px 5px 10px 10px;
     background-color: lawngreen;
 }
+
+.yourWorkCard #flightDet{
+    padding: 10px;
+    border: none;
+}
+    .yourWorkCard #flightDet div{
+        border: none;
+    }
