@@ -26,7 +26,7 @@ namespace FlyAir.Models.BookingModels
 
         //table name
         public const string tableName = "Bookings";
-        public const string GoFlightIdName = nameof(GoFlightId);
-        public const string ReturnFlightIdName = nameof(ReturnFlightId);
+        //public const string GoFlightIdName = nameof(GoFlightId);
+        //public const string ReturnFlightIdName = nameof(ReturnFlightId);
     }
 }

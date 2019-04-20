@@ -6,6 +6,8 @@
     var searchFlightTemp = SessionHelper.GetObjectFromJson<SearchFlight>(Context.Session, "searchFlightTemp");
     var goDate = searchFlightTemp.DepartDate;
     var returnDate = searchFlightTemp.ReturnDate;
+    var originId = searchFlightTemp.OriginID;
+    var destId = searchFlightTemp.DestID;
 }
 
 <link rel="stylesheet" href="~/lib/slick-1.8.1/slick.css">
@@ -47,8 +49,9 @@
         <br />
         <input type="submit" class="btn btn-danger btn-red" value="NEXT" id="submitBtn" />
     </form>
-    <div class="popup" onclick="myFunction()">
-
+    <button id="dummyBtn">dummy</button>
+    <div class="popup">
+        <span class="popuptext" id="myPopup">A Simple Popup!</span>
     </div>
 </div>
 
@@ -64,8 +67,70 @@
             var retFlightResults = $("#retFlightResults");
             var departDateIn = "", returnDateIn = "", parentClass = "";
             var isAdjustGoFlight = true;
+            var existingGroup = ""; var hasExistingGroup = false; var currUserConnId = "";
 
             //===============implementation
+
+            //start signalR connection to hub
+            var connection = new signalR.HubConnectionBuilder().withUrl("/bookingHub").build();
+            connection.start().then(function () {
+
+                //invoke to get current connection id
+                connection.invoke("GetCurrConnId").catch(function (err) {
+                    return console.error(err.toString());
+                }).then(function (respData) {
+                    currUserConnId = respData;
+                    //alert("currConnId: " + currUserConnId);
+                    });
+
+                //invoke to get all existing groups and compare the location id. If match, means there is existing group. Join existing group. Else, new group is created when joined.
+                connection.invoke("GetAllGroups").catch(function (err) {
+                    return console.error(err.toString());
+                }).then(function (respData) {
+                    //alert(respData);
+                    $.each(JSON.parse(respData), function (idx, obj) {
+                        if ((@originId == obj.locId1 && @destId == obj.locId2) || (@originId == obj.locId2 && @destId == obj.locId1)) {
+                            existingGroup = obj.groupNameAKAConnId;
+                            hasExistingGroup = true;
+                            return false;
+                        } else {
+                            existingGroup = "";
+                        }
+                    });
+
+                    //overwrite existingGroup with currUserConnId if there is no existing group
+                    if (!hasExistingGroup) {
+                        existingGroup = currUserConnId;
+                        //alert("existingGroup / currUserConnId: " + existingGroup);
+                    }
+
+                    //alert("has existing group: " + hasExistingGroup);
+
+                    //after getting all existing groups, invoke to join group, based on whether there is existing group
+                    connection.invoke("JoinGroup", existingGroup, hasExistingGroup, @originId, @destId).catch(function (err) {
+                        return console.error(err.toString());
+                    });
+                });
+                
+            });
+
+            //whenever a new booking is made and added to DB, a notification will be triggered. After the set period, notification disappears.
+            connection.on("subsNewAdd", function (respData) {
+                //use textContext to replace text to avoid XSS
+                document.getElementById("myPopup").textContent = respData;
+                document.getElementById("myPopup").classList.add("show");
+                var counter = 10;
+                setInterval(function () {
+                    counter--;
+                    if (counter < 0) {
+                        document.getElementById("myPopup").classList.remove("show");
+                    } else {
+                        //countDown.text(counter.toString());
+                    }
+                }, 1000);
+            });
+
+
             //when the slide of the slider is clicked, it becomes current slide and related flight details are obtained from ajax
             slide.click(function () {
                 //get clicked slide index

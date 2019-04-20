@@ -60,7 +60,7 @@ namespace FlyAir.Controllers
             var result = await _flightRepo.GetBySearchInput(vm);
 
             //subscribe to signalR real time update of item addition to Booking Table
-            _bookingRepo.subscribeBookingAdd();
+            //_bookingRepo.subscribeBookingAdd();
 
             //copy and bring over variables needed for next view
             result.OriginName = vm.OriginName;

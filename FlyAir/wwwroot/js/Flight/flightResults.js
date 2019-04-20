@@ -17,26 +17,6 @@ $(function () {
 
     //============== implementation
 
-    //start signalR connection to hub
-    var connection = new signalR.HubConnectionBuilder().withUrl("/bookingHub").build();
-    connection.start().then(e => {
-        //alert("connection started");
-    });
-
-    //whenever a new booking is made and added to DB, a notification will be triggered.
-    connection.on("subsNewAdd", function (respData) {
-        document.getElementById("myPopup").classList.toggle("show");
-        var counter = 10;
-        setInterval(function () {
-            counter--;
-            if (counter < 0) {
-                $("#myPopup").hide();
-            } else {
-                //countDown.text(counter.toString());
-            }
-        }, 1000); 
-    });
-
     //initialize slick for goFlight and return Flight
     initSlick(goSlider);
     initSlick(retSlider);
