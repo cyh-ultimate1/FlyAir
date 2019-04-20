@@ -12,8 +12,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using TableDependency.SqlClient;
+using TableDependency.SqlClient.Base.Abstracts;
 using TableDependency.SqlClient.Base.Enums;
 using TableDependency.SqlClient.Base.EventArgs;
 
@@ -314,14 +316,21 @@ namespace FlyAir.Data.Repositories
 
         #region updateSubscription
 
-        public void subscribeBookingAdd()
+        private string _groupName = "";
+        public async Task<int> subscribeBookingAdd(int locId1, int locId2, string groupName)
         {
+            _groupName = groupName;
+            ITableDependencyFilter filterExpression = new BookingSqlTableDependencyFilter(locId1, locId2);
+
             using (SqlConnection connection = new SqlConnection(_config.GetConnectionString(commonName.defaultConn)))
             {
                 try
                 {
                     var cs = _config.GetConnectionString(commonName.defaultConn);
-                    _tableDependency = new SqlTableDependency<Booking>(cs, Booking.tableName, null, null, null, null, DmlTriggerType.Insert);
+                    _tableDependency = new SqlTableDependency<Booking>(connectionString: cs,
+                        tableName: Booking.tableName,
+                        filter: filterExpression,
+                        notifyOn: DmlTriggerType.Insert);
                     _tableDependency.OnChanged += Changed;
                     //_tableDependency.OnError += TableDependency_OnError;
                     _tableDependency.Start();
@@ -335,13 +344,15 @@ namespace FlyAir.Data.Repositories
                     connection.Close();
                 }
             }
+
+            return 0;
         }
 
         private void Changed(object sender, RecordChangedEventArgs<Booking> e)
         {
-            if (e.ChangeType != ChangeType.None)
+            if (e.ChangeType == ChangeType.Insert)
             {
-                _bookingHub.Clients.All.SendAsync("subsNewAdd", "Someone just booked.");
+                _bookingHub.Clients.Group(_groupName).SendAsync("subsNewAdd", "Someone just booked a flight between these two location.");
             }
         }
 

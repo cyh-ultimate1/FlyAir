@@ -17,7 +17,7 @@ namespace FlyAir.Data.IRepositories
         Task<IEnumerable<string>> GetSeatsTakenByFlightId(int flightId, bool isGoOrReturn);
         Task<int> UpdateGuestsSeats(BookingNonMember input);
         Task<int> UpdateHasCheckedIn(int bookingId);
-        void subscribeBookingAdd();
+        Task<int> subscribeBookingAdd(int locId1, int locId2, string groupName);
         Task<IEnumerable<FlightDestCount>> GetAllDestinationCount();
     }
 }
