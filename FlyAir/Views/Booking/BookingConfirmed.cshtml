@@ -1,24 +1,45 @@
 ﻿@model FlyAir.Models.BookingModels.BookingVM
 @{
     ViewData["Title"] = "BookingConfirmed";
-}
-
-<h2>BookingConfirmed</h2>
-
-<div>@Model.Booking.ID</div>
-<div>@Model.Booking.GoFlight.OriginLocID</div>
-<div>@Model.Booking.GoFlight.DestLocID</div>
-
-@if (Model.BookingNonMembers != null)
-{
-    foreach(var guest in Model.BookingNonMembers)
-    {
-        <div>@guest.Name</div>
-
-    }
+    var booking = Model.Booking;
 }
 
 
-<div>
-    <a asp-controller="Home" asp-action="Index" class="btn btn-info">BACK TO HOME</a>
+<div class="container">
+    <h4>Booking Confirmed</h4>
+    <div class="card">
+        <div class="form-group">
+            <div class="col-md-12 row">
+                <div class="col-md-3">ID: </div>
+                <div class="col-md-9">@booking.ID</div>
+            </div>
+            <div class="col-md-12 row">
+                <div class="col-md-3">Origin: </div>
+                <div class="col-md-9">@booking.GoFlight.OriginLocID</div>
+            </div>
+            <div class="col-md-12 row">
+                <div class="col-md-3">Destination: </div>
+                <div class="col-md-9">@booking.GoFlight.DestLocID</div>
+            </div>
+            @if (Model.BookingNonMembers != null)
+            {
+                foreach (var guest in Model.BookingNonMembers)
+                {
+                    <div class="col-md-12 row">
+                        <div class="col-md-3">Guest: </div>
+                        <div class="col-md-9">@guest.Name</div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <br />
+    <div>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-info">BACK TO HOME</a>
+    </div>
 </div>
+
+
+
+
+

@@ -19,20 +19,58 @@
         <h4>Your Work</h4>
         <div class="card yourWorkCard">
             <div id="title">You have @flightCount flight duty coming up.</div>
-            @foreach (var flight in flights)
-            {
-                <div>Flight ID: @flight.ID</div>
-                <div>From: @flight.OriginLoc1.City</div>
-                <div>Depart Time: @flight.DepartDateTime</div>
-
-                <div>To: @flight.DestLoc1.City</div>
-                <div>Arrival Time: @flight.ArrDateTime</div>
-
-                <hr />
-            }
+            <div id="flightDet">
+                @foreach (var flight in flights)
+                {
+                <div class="form-control">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Flight ID:</label>
+                        </div>
+                        <div class="col-md-9">
+                            @flight.ID
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>From:</label>
+                        </div>
+                        <div class="col-md-9">
+                            @flight.OriginLoc1.City
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Depart Time:</label>
+                        </div>
+                        <div class="col-md-9">
+                            @flight.DepartDateTime
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>To:</label>
+                        </div>
+                        <div class="col-md-9">
+                            @flight.DestLoc1.City
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Arrival Time:</label>
+                        </div>
+                        <div class="col-md-9">
+                            @flight.ArrDateTime
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                }
+            </div>
         </div>
     </div>
-
+    <br />
+    <br />
     <div class="card">
         <div class="form-control">
             <div class="row">
@@ -55,5 +93,7 @@
             </div>
         </div>
     </div>
-    
+    <br />
+    <br />
+    <br />
 </div>
