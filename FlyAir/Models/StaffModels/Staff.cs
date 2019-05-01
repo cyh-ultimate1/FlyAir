@@ -26,6 +26,8 @@ namespace FlyAir.Models.StaffModels
         [Display(Name = "Staff Type Name")]
         public virtual string Type { get; set; }
 
+        public int UserID { get; set; }
+
         //public string Discriminator { get; set; }
 
         //table name

@@ -3,9 +3,14 @@
     --myOrange: #ff6905;
     --myMaroon: #ec4141;
     --myGreen: #6ee1e2;
+    --myGrey: #eeeeee;
 }
 
 /*======== body content ===============*/
+body{
+    background-color: var(--myGrey);
+}
+
 .myBodyContent {
     margin-top: 30px;
 }

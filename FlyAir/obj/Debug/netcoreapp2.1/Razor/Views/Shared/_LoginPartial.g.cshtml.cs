@@ -116,7 +116,7 @@ using FlyAir.Models.IdentityEntities;
 #line default
 #line hidden
             BeginContext(326, 1228, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f0b2788d6d461bafcbeceedf5547a2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "16b8b75d8c3d46e59e5169378a29526f", async() => {
                 BeginContext(428, 48, true);
                 WriteLiteral("\r\n    <ul class=\"nav navbar-nav navbar-right\">\r\n");
                 EndContext();
@@ -130,7 +130,7 @@ using FlyAir.Models.IdentityEntities;
                 WriteLiteral("            <li class=\"nav-item\">");
                 EndContext();
                 BeginContext(576, 85, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67dcba7207e540958c5782add65d3c57", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d45fdda1c6d34f4cb7440cbdbcbbc656", async() => {
                     BeginContext(642, 15, true);
                     WriteLiteral("Admin Dashboard");
                     EndContext();
@@ -165,7 +165,7 @@ using FlyAir.Models.IdentityEntities;
                 WriteLiteral("            <li class=\"nav-item\">");
                 EndContext();
                 BeginContext(809, 94, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "01d0831e06274302a5b0677858d3b756", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "01f93fad99db4e64a5d75cb862c92217", async() => {
                     BeginContext(884, 15, true);
                     WriteLiteral("Staff Dashboard");
                     EndContext();
@@ -190,7 +190,7 @@ using FlyAir.Models.IdentityEntities;
                 WriteLiteral("</li>\r\n            <li class=\"nav-item\">\r\n                ");
                 EndContext();
                 BeginContext(961, 108, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a623aab08f5a4622b2c1419340ae8fb5", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4f118ace20a9410bba85a48e69080f83", async() => {
                     BeginContext(1055, 10, true);
                     WriteLiteral("Staff Chat");
                     EndContext();
@@ -225,7 +225,7 @@ using FlyAir.Models.IdentityEntities;
                 WriteLiteral("        <li>\r\n            ");
                 EndContext();
                 BeginContext(1127, 157, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4102acc66b184b7293db0b999cd70b16", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fd2a746f43fd45fb90109c1d96e8e88a", async() => {
                     BeginContext(1243, 6, true);
                     WriteLiteral("Hello ");
                     EndContext();
@@ -302,7 +302,7 @@ else
             WriteLiteral("        \r\n        <li class=\"nav-item withBtn\">");
             EndContext();
             BeginContext(1838, 108, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d364e18302704cb99825bc1fd0cfedcd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "259e40c61b6446318ba8b69af3330d5b", async() => {
                 BeginContext(1926, 16, true);
                 WriteLiteral("Log in / Sign Up");
                 EndContext();

@@ -47,6 +47,7 @@ namespace FlyAir.Controllers
             tempBooking.GoFlight.OriginLoc1 = await _countryRepo.GetLocById(tempBooking.GoFlight.OriginLocID);
             tempBooking.GoFlight.DestLoc1 = await _countryRepo.GetLocById(tempBooking.GoFlight.DestLocID);
 
+            //if there is return flight, get the flight details
             if (oneIdSelRet != null)
             {
                 tempBooking.ReturnFlightId = Convert.ToInt32(oneIdSelRet);
