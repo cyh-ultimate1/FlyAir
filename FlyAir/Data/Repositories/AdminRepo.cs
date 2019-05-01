@@ -95,10 +95,10 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "INSERT INTO " + Staff.tableName + " (Name, DateOfBirth, StaffTypeID) VALUES(@Name, @DateOfBirth, @StaffTypeID)" +
+                    string sQuery = "INSERT INTO " + Staff.tableName + " (Name, DateOfBirth, StaffTypeID, UserID) VALUES(@Name, @DateOfBirth, @StaffTypeID, @UserID)" +
                         "SELECT CAST(SCOPE_IDENTITY() as int)";
                     conn.Open();
-                    var addedInt = conn.QueryAsync<int>(sQuery, new { Name = input.Name, DateOfBirth = input.DateOfBirth, StaffTypeID = input.StaffTypeID}).Result.Single();
+                    var addedInt = conn.QueryAsync<int>(sQuery, new { Name = input.Name, DateOfBirth = input.DateOfBirth, StaffTypeID = input.StaffTypeID, UserID = input.tempUserid}).Result.Single();
                     return addedInt;
                 }
                 catch (Exception)
@@ -158,28 +158,6 @@ namespace FlyAir.Data.Repositories
             }
         }
 
-        public async Task<int> RelateStaffToUser(IdentityUserStaffs input)
-        {
-            using (IDbConnection conn = Connection)
-            {
-                try
-                {
-                    string sQuery = "INSERT INTO " + IdentityUserStaffs.tableName + " (UserId, StaffId) VALUES(@UserId, @StaffId)";
-                    //"SELECT CAST(SCOPE_IDENTITY() as int)";
-                    conn.Open();
-                    var addedInt = await conn.ExecuteAsync(sQuery, new { UserId = input.UserId, StaffId = input.StaffId });
-                    return addedInt;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-        }
 
         public async Task<int> GetUserIdByStaffId(int staffId)
         {
@@ -187,7 +165,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT UserId FROM " + IdentityUserStaffs.tableName + " WHERE StaffId = @StaffId;";
+                    string sQuery = $"SELECT {nameof(Staff.UserID)} FROM " + Staff.tableName + " WHERE StaffId = @StaffId;";
                     conn.Open();
                     var result = await conn.QuerySingleAsync<int>(sQuery, new { StaffId = staffId });
                     return result;

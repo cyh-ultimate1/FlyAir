@@ -39,7 +39,7 @@ namespace FlyAir.Data.Repositories
             {
                 try
                 {
-                    string sQuery = "SELECT StaffId FROM " + IdentityUserStaffs.tableName + " WHERE UserId = @UserId;";
+                    string sQuery = $"SELECT ID FROM {Staff.tableName} WHERE {nameof(Staff.UserID)} = @UserId;";
                     conn.Open();
                     var result = await conn.QuerySingleAsync<int>(sQuery, new { UserId = userid });
                     return result;

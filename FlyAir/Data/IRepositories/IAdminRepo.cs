@@ -25,7 +25,6 @@ namespace FlyAir.Data.IRepositories
         Task<int> DeleteFlightStaffs(int flightId, IEnumerable<int> selectedStaffsId);
         Task<IEnumerable<Role>> GetAllRoles();
         Task<UserAndRole> GetUserRoleByUserid(int userId);
-        Task<int> RelateStaffToUser(IdentityUserStaffs input);
         Task<int> GetUserIdByStaffId(int staffId);
         Task<int> UpdateUserAndRole(UserAndRole input);
         Task<FlightSeatType> GetFlightSeatTypeDetails(int flightSeatTypeId);

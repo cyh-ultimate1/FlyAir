@@ -346,14 +346,6 @@ namespace FlyAir.Controllers
         {
             var addedStaffInt = await _adminRepo.AddStaff(vm);
 
-            //relate user to staff
-            var tempStaffUser = new IdentityUserStaffs
-            {
-                UserId = vm.tempUserid,
-                StaffId = addedStaffInt
-            };
-            await _adminRepo.RelateStaffToUser(tempStaffUser);
-
             var staffTypeId = vm.StaffTypeID;
             var staffTypeName = (await _adminRepo.GetStaffTypeById(vm.StaffTypeID)).Type;
             dynamic obj = null;
