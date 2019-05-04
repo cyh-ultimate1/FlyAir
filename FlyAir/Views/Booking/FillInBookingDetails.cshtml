@@ -25,7 +25,7 @@
 <div class="container marginBtmAdd">
 
     <h2>Flight Details</h2>
-    <div class="card" style="padding: 10px;">
+    <div class="card" style="padding: 15px;">
         <div>@goFlight.OriginLoc1.City, @goFlight.OriginLoc1.CountryName - @goFlight.OriginLoc1.City, @goFlight.OriginLoc1.CountryName</div>
         <div>Go Flight Departure Time: @goFlight.DepartDateTime</div>
         <div>Go Flight Arrival Time: @goFlight.ArrDateTime</div>
@@ -48,7 +48,7 @@
         @Html.AntiForgeryToken()
         @for (idx = 0; idx < Model.BookingNonMembers.Count(); idx++)
         {
-            <div class="card" style="background-color: #ccc">
+            <div class="card" style="background-color: var(--myGreen); border-radius:0; padding: 10px; box-shadow:#ccc 10px 10px ;">
                 <div><strong>Guest @(idx + 1)</strong></div>
                 @if (idx == 0 && currUser != null)
                 {

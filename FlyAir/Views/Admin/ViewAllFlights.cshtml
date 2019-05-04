@@ -34,14 +34,14 @@
                     @Html.DisplayNameFor(model => model.PlaneID)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.OriginLoc)
+                    @Html.DisplayNameFor(model => model.OriginLoc1)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DestLoc)
+                    @Html.DisplayNameFor(model => model.DestLoc1)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.FlightSeatType)
-                </th>
+                </th>*@
                 <th></th>
             </tr>
         </thead>
@@ -73,9 +73,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DestLoc1.City), @Html.DisplayFor(modelItem => item.DestLoc1.CountryName)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.FlightSeatType.ID)
-                </td>
+                </td>*@
                 <td>
                     <a asp-action="EditFlight" asp-route-flightId="@item.ID" class="btn btn-success">Edit</a> |
                     <a asp-action="DeleteFlight" asp-route-flightId="@item.ID" class="btn btn-danger">Delete</a> |

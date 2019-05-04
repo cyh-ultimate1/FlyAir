@@ -14,3 +14,10 @@
         color: white;
     }
 
+.mainWrapper{
+    width: 60%;
+}
+
+label{
+    font-weight: bold;
+}

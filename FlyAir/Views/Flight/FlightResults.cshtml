@@ -30,6 +30,8 @@
             @{ Model.adjustGoFlight = true; }
             @await Html.PartialAsync("_FlightResultsPartial", Model)
         </div>
+        <br />
+        <br />
         @if (Model.ReturnFlights != null)
         {
             <h4>@Model.DestName  -  @Model.OriginName</h4><span class="asteriskSign" id="retFlightErr">&nbsp;</span>
@@ -58,7 +60,8 @@
     <script src="~/js/Flight/flightResults.js"></script>
     <script src="~/lib/signalr/dist/browser/signalr.js"></script>
     <script>
-        $(function () {
+        $(function () {            
+            
                     //===== variables
             var slide = $(".slide");
             var departDateIn = "";
@@ -161,6 +164,11 @@
                     returnDateIn = $("." + parentClass + " .slick-current").attr("data-date");
                     isAdjustGoFlight = false;
                 }
+
+                if ((@returnDate.ToShortDateString()) === 1) {
+                    returnDateIn = "1/1/0001";
+                }
+
                 getFlightAjax(departDateIn, returnDateIn, isAdjustGoFlight);
             }
 
