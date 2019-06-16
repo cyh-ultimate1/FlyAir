@@ -47,6 +47,13 @@ namespace FlyAir.Controllers
             var topN = 5;
             //get all destination count and sort and take top N 
             var flightDestCount = (await _bookingRepo.GetAllDestinationCount());
+
+            //assign topN or flightDestCount count, whichever is higher.
+            if(flightDestCount.Count() < topN)
+            {
+                topN = flightDestCount.Count();
+            }
+
             flightDestCount = flightDestCount.OrderByDescending(a => a.FreqCount).Take(topN).ToList();
             if(flightDestCount != null && flightDestCount.Count() >= topN)
             {

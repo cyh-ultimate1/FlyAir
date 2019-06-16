@@ -8,4 +8,5 @@ Database: MSSQL Server
 Database ORM: Dapper .NET
 Logging: Serilog
 
+Visit https://flyair.cyheng.ga/ for project demo.
 More details can be found in project_details.pdf

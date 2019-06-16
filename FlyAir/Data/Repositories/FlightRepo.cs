@@ -68,7 +68,7 @@ namespace FlyAir.Data.Repositories
                     flights.GoFlights = await conn.QueryAsync<Flight>(sQuery, new { OriginId = vm.OriginID, DestId = vm.DestID, DepartDate = vm.DepartDate });
 
                     //if return flight option selected
-                    if (vm.WaySelection == 2 && vm.ReturnDate != null)
+                    if (vm.WaySelection == 2 && vm.ReturnDate != null && vm.ReturnDate.ToShortDateString() != "1/1/0001")
                     {
                         flights.ReturnFlights = await conn.QueryAsync<Flight>(sQuery, new { OriginId = vm.DestID, DestId = vm.OriginID, DepartDate = vm.ReturnDate });
                     }

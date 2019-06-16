@@ -3,10 +3,11 @@
     ViewData["Title"] = "AddFlightPlane";
 }
 
-<h2>Add/Edit Flight Plane</h2>
 
-<hr />
 <div class="container">
+    <h2>Add/Edit Flight Plane</h2>
+    <hr />
+
     <div class="row">
         <div class="col-md-6">
             <form asp-action="AddFlightPlane" asp-controller="Admin" method="post">
@@ -25,7 +26,7 @@
                     <select class="form-control" asp-for="Flight.PlaneID" id="flightPlaneSelect"></select>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
                 @if (Model.Flight.PlaneID != null && Model.Flight.PlaneID > 0)
                 {

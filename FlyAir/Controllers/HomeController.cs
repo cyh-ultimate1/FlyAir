@@ -22,6 +22,7 @@ namespace FlyAir.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.Remove("searchFlightTemp");
             var vm = new SearchFlight
             {
                 DepartDate = DateTime.Today,

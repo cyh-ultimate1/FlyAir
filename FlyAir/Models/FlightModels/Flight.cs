@@ -19,23 +19,31 @@ namespace FlyAir.Models.FlightModels
         [Display(Name = "Destination")]
         public int DestLocID { get; set; }
 
+        [Display(Name = "Depart Date Time")]
         public DateTime DepartDateTime { get; set; }
 
+        [Display(Name = "Arrival Date Time")]
         public DateTime ArrDateTime { get; set; }
 
         public decimal Price { get; set; }
 
+        [Display(Name = "Flight Seat Type")]
         public byte FlightSeatTypeID { get; set; }
 
+        [Display(Name = "Seats Remain")]
         public Int16 SeatsRemain { get; set; }
 
+        [Display(Name = "Plane ID")]
         public Int16 PlaneID { get; set; }
 
         public virtual LocationVM OriginLoc { get; set; }
 
         public virtual LocationVM DestLoc { get; set; }
 
+        [Display(Name = "Origin")]
         public virtual Location OriginLoc1 { get; set; }
+
+        [Display(Name = "Destination")]
         public virtual Location DestLoc1 { get; set; }
 
         public virtual FlightSeatType FlightSeatType { get; set; }

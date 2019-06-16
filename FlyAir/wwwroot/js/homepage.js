@@ -71,6 +71,11 @@ $(function () {
             success = false;
         }
 
+        //if not two way, nullify return date input.
+        if ($("input[name='WaySelection']:checked").val() === '1') {
+            ReturnDate.val(null);
+        }
+
         //check conclusion
         if (success) {
             searchForm.submit();
