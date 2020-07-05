@@ -9,4 +9,4 @@ Database ORM: Dapper .NET
 Logging: Serilog
 
 Visit https://flyair.cyheng.ga/ for project demo.
-More details can be found in project_details.pdf
+More details can be found in [project_details.pdf](https://github.com/cyh-ultimate1/FlyAir/blob/master/project_details.pdf)
